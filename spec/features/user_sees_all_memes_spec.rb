@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'user sees', %Q{
+feature 'user sees something', %Q{
   As a user
   I want to see a list of memes on the /memes page
   So I can see what memes are available for review
@@ -12,5 +12,6 @@ feature 'user sees', %Q{
      save_and_open_page
      expect(page).to have_content("example title")
      expect(page).to have_content("www.example.com")
+
   end
 end
