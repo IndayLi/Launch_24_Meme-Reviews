@@ -16,7 +16,7 @@
 #
 #         get :index
 #
-#         save_and_open_page
+#         
 #         expect(page).to have_content("this is app/views/memes/index.html.erb")
 #       end
 #     end
