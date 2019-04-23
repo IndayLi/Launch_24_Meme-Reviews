@@ -3,6 +3,7 @@ class MemesController < ApplicationController
   before_action :authorize_admin, except: [:index, :show, :create]
 
   def index
+    @memes = Meme.all
   end
 
   protected
