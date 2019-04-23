@@ -1,3 +1,9 @@
-<div >
-  <h3>this is app/views/memes/index.html.erb</h3>
+<div>
+  <h3>List of Memes</h3>
+  <% @memes.each do |meme| %>
+  <dd class="meme">
+    <dl>Title: <%= meme.title %></dl>
+    <dl>URL: <%= meme.imageUrl %></dl>
+  </dd>
+  <% end %>
 </div>
