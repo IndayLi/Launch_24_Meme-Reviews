@@ -1,6 +1,6 @@
 class MemesController < ApplicationController
-  before_action :authorize_user, except [:index, :show]
-  before_action :authorize_admin, except [:index, :show, :create]
+  before_action :authorize_user, except: [:index, :show]
+  before_action :authorize_admin, except: [:index, :show, :create]
 
   def index
   end
