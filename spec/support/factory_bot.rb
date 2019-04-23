@@ -7,4 +7,9 @@ FactoryBot.define do
     password_confirmation { 'password' }
   end
 
+  factory :meme do
+    user { FactoryBot.create(:user) }
+    title { Faker::Book.title }
+    imageUrl { Faker::Internet.url }
+  end
 end
