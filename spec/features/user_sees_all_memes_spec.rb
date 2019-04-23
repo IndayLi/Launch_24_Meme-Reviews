@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'user sees something', %Q{
+feature 'user sees list of memes', %Q{
   As a user
   I want to see a list of memes on the /memes page
   So I can see what memes are available for review
