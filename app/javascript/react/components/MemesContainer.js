@@ -25,7 +25,6 @@ class MemesContainer extends Component {
           this.setState({memes: body})
         })
         .catch(error => console.error(`Error in fetch: ${error.message}`));
-
   }
 
   render() {
@@ -43,7 +42,7 @@ class MemesContainer extends Component {
 
     return(
       <div>
-      {memes}
+        {memes}
       </div>
     )
   }

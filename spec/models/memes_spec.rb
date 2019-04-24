@@ -9,9 +9,5 @@ RSpec.describe Meme, type: :model do
       expect(meme_one.title).to equal(meme_one.title)
       expect(meme_two.title).to equal(meme_two.title)
     end
-
   end
-
-
-
 end

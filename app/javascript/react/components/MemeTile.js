@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 
 const MemeTile = props => {
-
   return(
     <div>
       <dd>

@@ -1,24 +1,37 @@
-# require "rails_helper"
-#
-# RSpec.describe MemesController, type: :controller do
-#   let!(:user_one) {User.create(
-#     email: "andrewrandall1@gmail.com",
-#     encrypted_password: "whatever"
-#     )}
-#   let!(:first_meme) { Meme.create(
-#     user: user_one,
-#     title: "Dank meme",
-#     imageUrl: "https://i.imgur.com/mvjxwNn.png"
-#     )}
-#
-#     describe "GET#index" do
-#       it "should return a list of all memes" do
-#
-#         get :index
-#
-#         save_and_open_page
-#         expect(page).to have_content("this is app/views/memes/index.html.erb")
-#       end
-#     end
-#
-# end
+require "rails_helper"
+
+DatabaseCleaner.clean_with(:truncation)
+
+RSpec.describe Api::V1::MemesController, type: :controller do
+  describe "GET#index" do
+    let!(:user_member) { FactoryBot.create(:user, role: "member") };
+    let!(:meme_1) { Meme.create(title: "meme_1", imageUrl: "http://boop", description: "This is meme_1.", user: user_member) };
+    let!(:meme_2) { Meme.create(title: "meme_2", imageUrl: "http://boop", description: "This is meme_2.", user: user_member) };
+
+    it "returns successful response with json-formatted data" do
+      get :index
+
+      expect(response.status).to eq 200
+      expect(response.content_type).to eq "application/json"
+    end
+
+    it "returns all memes in the database" do
+      get :index
+
+      response_json = JSON.parse(response.body)
+
+      expect(response.status).to eq 200
+      expect(response.content_type).to eq "application/json"
+
+      expect(response_json.length).to eq 2
+      expect(response_json[0]["title"]).to eq meme_1.title
+      expect(response_json[1]["title"]).to eq meme_2.title
+      expect(response_json[0]["imageUrl"]).to eq meme_1.imageUrl
+      expect(response_json[1]["imageUrl"]).to eq meme_2.imageUrl
+      expect(response_json[0]["description"]).to eq meme_1.description
+      expect(response_json[1]["description"]).to eq meme_2.description
+      expect(response_json[0]["user_id"]).to eq user_member.id
+      expect(response_json[1]["user_id"]).to eq user_member.id
+    end
+  end
+end
