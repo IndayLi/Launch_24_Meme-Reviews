@@ -10,8 +10,7 @@ RSpec.describe User, type: :model do
     end
 
     it "is an admin if the role is admin" do
-      user_admin = FactoryBot.create(:user, role: "admin")
       expect(user_admin.admin?).to eq(true)
     end
-  end 
+  end
 end
