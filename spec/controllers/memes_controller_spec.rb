@@ -1,5 +1,7 @@
 require "rails_helper"
 
+DatabaseCleaner.clean_with(:truncation)
+
 RSpec.describe Api::V1::MemesController, type: :controller do
   describe "GET#index" do
     let!(:user_member) { FactoryBot.create(:user, role: "member") };
