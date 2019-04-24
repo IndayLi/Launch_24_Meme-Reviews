@@ -9,7 +9,7 @@ class MemesContainer extends Component {
     this.state={
       memes: []
     }
-    this.addNewMeme = this.addNewMeme.bind(this)
+
   }
 
   componentDidMount() {
@@ -28,28 +28,6 @@ class MemesContainer extends Component {
       this.setState({memes: body})
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
-  }
-
-  addNewMeme(memePayload){
-    fetch('/api/v1/memes', {
-      method: 'POST',
-      body: JSON.stringify(memePayload)
-      })
-      .then(response => {
-        if (response.ok) {
-          return response;
-        } else {
-          let errorMessage = `${response.status}(${response.statusText})` ,
-          error = new Error(errorMessage);
-          throw(error);
-        }
-        })
-        .then(response => response.json())
-        .then(body => {
-          debugger
-
-        })
-        .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
   render() {

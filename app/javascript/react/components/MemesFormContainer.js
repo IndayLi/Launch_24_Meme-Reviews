@@ -22,14 +22,37 @@ class MemesFormContainer extends Component {
 
   handleOnSubmit(event){
     event.preventDefault()
-    debugger
     let memePayload={
+      user_id: 1,
       title: this.state.title,
       imageUrl: this.state.imageUrl,
       description: this.state.description
-    }
-    debugger
-    this.props.addNewMeme(memePayload)
+    };
+    fetch('/api/v1/memes', {
+      method: 'POST',
+      body: JSON.stringify(memePayload),
+      credentials: 'same-origin',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(response => {
+      debugger
+      if (response.ok) {
+        return response;
+      } else {
+        let errorMessage = `${response.status}(${response.statusText})` ,
+        error = new Error(errorMessage);
+        throw(error);
+      }
+    })
+    .then(response => response.json())
+    .then(body => {
+      debugger
+      // this.setState({ title: body.title , imageUrl: , description:  })
+    })
+    .catch(error => console.error(`Error in fetch: ${error.message}`));
     this.clearForm()
   }
 
@@ -37,8 +60,9 @@ class MemesFormContainer extends Component {
     this.setState({title: '', imageUrl: '', description: ''})
   }
 
+
+
   render() {
-    debugger
     return(
       <div>
         <form onSubmit={this.handleOnSubmit}>

@@ -5,11 +5,11 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :memes, only: [:index]
+      resources :memes, only: [:index, :create]
     end
   end
 
-  resources :memes, only: [:new]
+  resources :memes, only: [:new, :create]
 
 
 
