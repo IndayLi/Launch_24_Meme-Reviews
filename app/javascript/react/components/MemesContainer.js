@@ -11,21 +11,20 @@ class MemesContainer extends Component {
 
   componentDidMount() {
     fetch('/api/v1/memes')
-      .then(response => {
-        if (response.ok) {
-          return response;
-        } else {
-          let errorMessage = `${response.status}(${response.statusText})` ,
-          error = new Error(errorMessage);
-          throw(error);
-        }
-        })
-        .then(response => response.json())
-        .then(body => {
-          this.setState({memes: body})
-        })
-        .catch(error => console.error(`Error in fetch: ${error.message}`));
-
+    .then(response => {
+      if (response.ok) {
+        return response;
+      } else {
+        let errorMessage = `${response.status}(${response.statusText})` ,
+        error = new Error(errorMessage);
+        throw(error);
+      }
+    })
+    .then(response => response.json())
+    .then(body => {
+      this.setState({memes: body})
+    })
+    .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
   render() {
@@ -43,7 +42,7 @@ class MemesContainer extends Component {
 
     return(
       <div>
-      {memes}
+        {memes}
       </div>
     )
   }

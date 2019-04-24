@@ -10,7 +10,7 @@ export const App = (props) => {
       <Router history={browserHistory}>
         <Route path='/' component={MemesContainer}/>
       </Router>
-      </div>
+    </div>
   )
 }
 
