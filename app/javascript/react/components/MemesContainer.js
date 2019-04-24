@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import MemeTile from './MemeTile'
+import MemesFormContainer from './MemesFormContainer'
+import { Link } from 'react-router'
 
 class MemesContainer extends Component {
   constructor(props) {
@@ -7,6 +9,7 @@ class MemesContainer extends Component {
     this.state={
       memes: []
     }
+    this.addNewMeme = this.addNewMeme.bind(this)
   }
 
   componentDidMount() {
@@ -27,6 +30,28 @@ class MemesContainer extends Component {
     .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
+  addNewMeme(memePayload){
+    fetch('/api/v1/memes', {
+      method: 'POST',
+      body: JSON.stringify(memePayload)
+      })
+      .then(response => {
+        if (response.ok) {
+          return response;
+        } else {
+          let errorMessage = `${response.status}(${response.statusText})` ,
+          error = new Error(errorMessage);
+          throw(error);
+        }
+        })
+        .then(response => response.json())
+        .then(body => {
+          debugger
+
+        })
+        .catch(error => console.error(`Error in fetch: ${error.message}`));
+  }
+
   render() {
     let memes = this.state.memes.map(meme => {
       return (
@@ -36,13 +61,19 @@ class MemesContainer extends Component {
           user_id={meme.user_id}
           title={meme.title}
           url={meme.imageUrl}
+
         />
       )
     })
 
     return(
       <div>
-        {memes}
+        <div>
+          {memes}
+        </div>
+        <div>
+          <Link to={'/memes/new'}>Add New Meme</Link>
+        </div>
       </div>
     )
   }

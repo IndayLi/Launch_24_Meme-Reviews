@@ -8,4 +8,9 @@ Rails.application.routes.draw do
       resources :memes, only: [:index]
     end
   end
+
+  resources :memes, only: [:new]
+
+
+
 end
