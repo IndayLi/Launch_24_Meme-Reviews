@@ -9,9 +9,8 @@ feature 'user sees list of memes', %Q{
     user_one = User.create(email: 'user_one@example.com', password: 'password', password_confirmation: 'password', role: 'member')
     meme_one = Meme.create(user: user_one, title: "example title", imageUrl: "www.example.com")
 
-     visit '/'
-     # expect(page).to have_content("example title")
-     # expect(page).to have_content("www.example.com")
+    visit '/'
 
+    expect(page).to have_content("Meme Reviews")
   end
 end
