@@ -8,6 +8,8 @@ class Api::V1::MemesController < ApplicationController
 
   def create
     meme = Meme.new(user_id: params[:user_id], title: params[:title], imageUrl: params[:imageUrl], description: params[:description])
+
+    # meme = Meme.new(user_id: 3, title: params[:title], imageUrl: params[:imageUrl], description: params[:description])
     if meme.save
       render json: { meme: meme }
     else
