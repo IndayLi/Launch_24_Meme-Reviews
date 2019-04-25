@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   end
 
   resources :memes, only: [:index, :new, :create, :show]
+  
 end

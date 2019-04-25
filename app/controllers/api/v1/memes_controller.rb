@@ -20,7 +20,6 @@ class Api::V1::MemesController < ApplicationController
     render json: meme
   end
 
-
   # private
   #
   # def meme_params

@@ -30,7 +30,7 @@ class ShowContainer extends Component {
   render() {
     return(
       <div>
-        {this.state.meme.title}
+        <h2>{this.state.meme.title}</h2>
         {this.state.meme.imageUrl}
         {this.state.meme.description}
       </div>
