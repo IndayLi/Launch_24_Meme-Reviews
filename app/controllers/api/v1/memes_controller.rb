@@ -14,6 +14,13 @@ class Api::V1::MemesController < ApplicationController
       render json: { error: meme.errors.full_messages }, status: :unprocessable_entity
     end
   end
+
+  def show
+    meme = Meme.find(params[:id])
+    render json: meme
+  end
+
+
   # private
   #
   # def meme_params
