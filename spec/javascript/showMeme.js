@@ -22,7 +22,7 @@ describe("ShowContainer", () => {
 
   afterEach(fetchMock.restore);
 
-  it("renders an h2 with meme title", (done) => {
+  it("renders the show container on the page", (done) => {
     setTimeout(() => {
       expect(wrapper.find(ShowContainer)).toBePresent();
       done();
