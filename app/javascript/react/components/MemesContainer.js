@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import MemeTile from './MemeTile'
+import MemesFormContainer from './MemesFormContainer'
+import { Link } from 'react-router'
 
 class MemesContainer extends Component {
   constructor(props) {
@@ -7,6 +9,7 @@ class MemesContainer extends Component {
     this.state={
       memes: []
     }
+
   }
 
   componentDidMount() {
@@ -36,13 +39,19 @@ class MemesContainer extends Component {
           user_id={meme.user_id}
           title={meme.title}
           url={meme.imageUrl}
+
         />
       )
     })
 
     return(
       <div>
-        {memes}
+        <div>
+          {memes}
+        </div>
+        <div>
+          <Link to={'/memes/new'}>Add New Meme</Link>
+        </div>
       </div>
     )
   }

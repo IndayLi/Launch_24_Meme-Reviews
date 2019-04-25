@@ -1,6 +1,8 @@
 import React from 'react';
 import { Router, browserHistory, Route} from 'react-router';
 import MemesContainer from './MemesContainer'
+import ShowContainer from "./ShowContainer";
+import MemesFormContainer from './MemesFormContainer';
 
 
 export const App = (props) => {
@@ -9,6 +11,9 @@ export const App = (props) => {
     <div>
       <Router history={browserHistory}>
         <Route path='/' component={MemesContainer}/>
+        <Route path='/memes' component={MemesContainer} />
+        <Route path="/memes/:id" component={ShowContainer} />
+        <Route path='/memes/new' component={MemesFormContainer} />
       </Router>
     </div>
   )

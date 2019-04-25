@@ -1,10 +1,16 @@
 class MemesController < ApplicationController
-  before_action :authorize_user, except: [:index, :show]
-  before_action :authorize_admin, except: [:index, :show, :create]
+  before_action :authorize_user, except: [:index, :show, :new, :create] ## Added 'new and create' for dev, will need to remove/refactor for production
+  before_action :authorize_admin, except: [:index, :show, :new, :create]
 
   def index
     @memes = Meme.all
   end
+
+  def new
+    @meme = Meme.new
+    @user = current_user
+  end
+
 
   protected
 
