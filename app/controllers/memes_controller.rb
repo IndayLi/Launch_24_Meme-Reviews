@@ -11,6 +11,9 @@ class MemesController < ApplicationController
     @user = current_user
   end
 
+  def show
+    
+  end
 
   protected
 
