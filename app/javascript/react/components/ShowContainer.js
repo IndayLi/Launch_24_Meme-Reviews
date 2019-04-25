@@ -31,8 +31,8 @@ class ShowContainer extends Component {
     return(
       <div>
         <h2>{this.state.meme.title}</h2>
-        {this.state.meme.imageUrl}
-        {this.state.meme.description}
+        <img src={this.state.meme.imageUrl} />
+        <p>{this.state.meme.description}</p>
       </div>
     );
   };
