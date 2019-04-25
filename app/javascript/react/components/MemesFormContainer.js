@@ -23,15 +23,15 @@ class MemesFormContainer extends Component {
   handleOnSubmit(event){
     event.preventDefault()
     let memePayload={
-      user: 2,
       title: this.state.title,
       imageUrl: this.state.imageUrl,
       description: this.state.description
     };
+    
     fetch('/api/v1/memes', {
+      credentials: 'same-origin',
       method: 'POST',
       body: JSON.stringify(memePayload),
-      credentials: 'same-origin',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
@@ -48,8 +48,6 @@ class MemesFormContainer extends Component {
     })
     .then(response => response.json())
     .then(body => {
-
-      // this.setState({ title: body.title , imageUrl: , description:  })
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
     this.clearForm()
@@ -58,8 +56,6 @@ class MemesFormContainer extends Component {
   clearForm(){
     this.setState({title: '', imageUrl: '', description: ''})
   }
-
-
 
   render() {
     return(
