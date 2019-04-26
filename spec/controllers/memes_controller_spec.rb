@@ -62,12 +62,39 @@ RSpec.describe Api::V1::MemesController, type: :controller do
   end
 
   describe "POST#create" do
-    let!(:user) { { email: "test-user@example.com", password: "password", password_confirmation: "password", role: "member" } };
-    # let!(:user_member) { FactoryBot.create(:user, role: "member") };
-    binding.pry
-    let!(:new_meme) { { user: current_user, title: "meme_1", imageUrl: "http://boop", description: "This is meme_1." }};
-    it "adds a new meme to the database" do
-      expect { post :create, body: new_meme.to_json }.to change { Meme.count }.by 1
+    let!(:user) { FactoryBot.create(:user, role: "member") };
+    it "creates a meme" do
+      sign_in user
+      post_json = {
+        title: "Meme Title Woohoo",
+        imageUrl: "www.meme.com",
+        user: user
+      }.to_json
+
+      prev_count = Meme.count
+      post(:create, body: post_json)
+      expect(Meme.count).to eq(prev_count + 1)
+    end
+
+    it "returns the json of the newly posted meme" do
+      sign_in user
+      post_json = {
+        title: "Meme Title Woohoo",
+        imageUrl: "www.meme.com",
+        user_id: user.id
+      }.to_json
+
+      post(:create, body: post_json)
+      returned_json = JSON.parse(response.body)
+
+      expect(response.status).to eq 200
+      expect(response.content_type).to eq ("application/json")
+
+      expect(returned_json).to be_kind_of(Hash)
+      expect(returned_json).to_not be_kind_of(Array)
+      expect(returned_json["meme"]["title"]).to eq "Meme Title Woohoo"
+      expect(returned_json["meme"]["imageUrl"]).to eq "www.meme.com"
+      expect(returned_json["meme"]["user_id"]).to eq user.id
     end
   end
 end
