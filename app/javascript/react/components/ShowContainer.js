@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import ReviewsContainer from './ReviewsContainer'
 
 class ShowContainer extends Component {
   constructor(props) {
@@ -33,6 +34,8 @@ class ShowContainer extends Component {
         <h2>{this.state.meme.title}</h2>
         <img src={this.state.meme.imageUrl}/>
         <p>{this.state.meme.description}</p>
+        <ReviewsContainer
+        />
       </div>
     );
   };
