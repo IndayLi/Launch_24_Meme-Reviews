@@ -1,6 +1,4 @@
-// import "testHelper";
 import testHelper from "./testHelper";
-
 import MemeTile from "../../app/javascript/react/components/MemeTile";
 
 describe("MemeTile", () => {

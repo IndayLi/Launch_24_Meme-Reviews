@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import MemeTile from './MemeTile'
+import MemesFormContainer from './MemesFormContainer'
+import { Link } from 'react-router'
 
 class MemesContainer extends Component {
   constructor(props) {
@@ -42,7 +44,12 @@ class MemesContainer extends Component {
 
     return(
       <div>
-        {memes}
+        <div>
+          {memes}
+        </div>
+        <div>
+          <a href = {'/memes/new'}>Add New Meme</a>
+        </div>
       </div>
     )
   }
