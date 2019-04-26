@@ -47,9 +47,6 @@ RSpec.describe Api::V1::MemesController, type: :controller do
       get :show, params: {id: meme_1.id}
       response_json = JSON.parse(response.body)
 
-      expect(response.status).to eq 200
-      expect(response.content_type).to eq "application/json"
-
       expect(response_json["title"]).to eq meme_1.title
       expect(response_json["imageUrl"]).to eq meme_1.imageUrl
       expect(response_json["description"]).to eq meme_1.description
