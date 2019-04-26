@@ -8,7 +8,7 @@ class Api::V1::MemesController < ApplicationController
 
   def create
     user_input = JSON.parse(request.body.read)
-    binding.pry
+
     meme = Meme.new(
       user: current_user,
       title: user_input["title"],
@@ -16,10 +16,8 @@ class Api::V1::MemesController < ApplicationController
       description: user_input["description"]
     )
     if meme.save
-      binding.pry
       render json: { meme: meme }
     else
-      binding.pry
       render json: { error: meme.errors.full_messages }, status: :unprocessable_entity
     end
   end

@@ -63,24 +63,39 @@ RSpec.describe Api::V1::MemesController, type: :controller do
   end
 
   describe "POST#create" do
-    it "creates a meme" doinclude Devise::Test::ControllerHelpers
-      sign_in user_idpost_json = {
+    let!(:user) { FactoryBot.create(:user, role: "member") };
+    it "creates a meme" do
+      sign_in user
+      post_json = {
         title: "Meme Title Woohoo",
-        imageUrl: "wwww.meme.com",
+        imageUrl: "www.meme.com",
         user: user
       }.to_json
 
+      prev_count = Meme.count
+      post(:create, body: post_json)
+      expect(Meme.count).to eq(prev_count + 1)
+    end
+
+    it "returns the json of the newly posted meme" do
+      sign_in user
+      post_json = {
+        title: "Meme Title Woohoo",
+        imageUrl: "www.meme.com",
+        user_id: user.id
+      }.to_json
 
       post(:create, body: post_json)
-      returned_json = JSON.parese(response.body)
+      returned_json = JSON.parse(response.body)
+
       expect(response.status).to eq 200
       expect(response.content_type).to eq ("application/json")
 
       expect(returned_json).to be_kind_of(Hash)
       expect(returned_json).to_not be_kind_of(Array)
-      expect(returned_json["title"]).to eq "Meme Title Woohoo"
-      expect(returned_json["imageUrl"]).to eq "www.meme.com"
-      expect(returned_json["user"]).to eq user
+      expect(returned_json["meme"]["title"]).to eq "Meme Title Woohoo"
+      expect(returned_json["meme"]["imageUrl"]).to eq "www.meme.com"
+      expect(returned_json["meme"]["user_id"]).to eq user.id
     end
   end
 
