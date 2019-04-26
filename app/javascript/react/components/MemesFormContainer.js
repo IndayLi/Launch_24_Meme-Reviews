@@ -8,14 +8,12 @@ class MemesFormContainer extends Component {
       title: '',
       imageUrl: '',
       description: ''
-
     }
     this.handleOnChange = this.handleOnChange.bind(this)
     this.handleOnSubmit = this.handleOnSubmit.bind(this)
   }
 
   handleOnChange(event) {
-
     let newData = event.target.value
     this.setState({[event.target.name] : newData})
   }
@@ -27,7 +25,7 @@ class MemesFormContainer extends Component {
       imageUrl: this.state.imageUrl,
       description: this.state.description
     };
-    
+
     fetch('/api/v1/memes', {
       credentials: 'same-origin',
       method: 'POST',
@@ -50,6 +48,7 @@ class MemesFormContainer extends Component {
     .then(body => {
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
+
     this.clearForm()
   }
 
