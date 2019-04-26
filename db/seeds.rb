@@ -6,6 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+require_relative "../spec/support/factory_bot.rb"
 
-Meme.create(user_id: 2, title: "Third Meme", imageUrl: "www.example1.com")
-Meme.create(user_id: 2, title: "Four Meme", imageUrl: "www.test2.com")
+FactoryBot.create(:meme)
+FactoryBot.create(:meme)
+FactoryBot.create(:meme)
+FactoryBot.create(:meme)

@@ -12,8 +12,8 @@ export const App = (props) => {
       <Router history={browserHistory}>
         <Route path='/' component={MemesContainer}/>
         <Route path='/memes' component={MemesContainer} />
-        <Route path="/memes/:id" component={ShowContainer} />
         <Route path='/memes/new' component={MemesFormContainer} />
+        <Route path="/memes/:id" component={ShowContainer} />
       </Router>
     </div>
   )

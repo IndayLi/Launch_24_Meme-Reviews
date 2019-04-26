@@ -50,7 +50,7 @@ class MemesContainer extends Component {
           {memes}
         </div>
         <div>
-          <Link to={'/memes/new'}>Add New Meme</Link>
+          <a href = {'/memes/new'}>Add New Meme</a>
         </div>
       </div>
     )
