@@ -8,7 +8,7 @@ class ReviewsController < ApplicationController
 
   protected
 
-  def authorize_uzer
+  def authorize_user
     if !user_signed_in?
       flash[:notice] = "Please sign in or create an account."
       redirect_to new_user_registration_path
