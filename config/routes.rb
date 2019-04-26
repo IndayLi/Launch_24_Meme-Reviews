@@ -9,10 +9,6 @@ Rails.application.routes.draw do
     end
   end
 
-<<<<<<< HEAD
   resources :memes, only: [:index, :new, :create, :show]
-  
-=======
-  resources :memes, only: [:new, :create]
->>>>>>> 59f9f5624e70615379fb9dd02be1c4f75053a53a
+
 end
