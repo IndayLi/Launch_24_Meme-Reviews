@@ -1,9 +1,10 @@
 require "rails_helper"
 
+include Devise::Test::ControllerHelpers
+
 DatabaseCleaner.clean_with(:truncation)
 
 RSpec.describe Api::V1::MemesController, type: :controller do
-  let!(:user_member) { FactoryBot.create(:user, role: "member") };
   let!(:meme_1) { Meme.create(title: "meme_1", imageUrl: "http://boop", description: "This is meme_1.", user: user_member) };
   let!(:meme_2) { Meme.create(title: "meme_2", imageUrl: "http://boop2", description: "This is meme_2.", user: user_member) };
 
@@ -62,12 +63,31 @@ RSpec.describe Api::V1::MemesController, type: :controller do
   end
 
   describe "POST#create" do
-    let!(:user) { { email: "test-user@example.com", password: "password", password_confirmation: "password", role: "member" } };
-    # let!(:user_member) { FactoryBot.create(:user, role: "member") };
-    binding.pry
-    let!(:new_meme) { { user: current_user, title: "meme_1", imageUrl: "http://boop", description: "This is meme_1." }};
-    it "adds a new meme to the database" do
-      expect { post :create, body: new_meme.to_json }.to change { Meme.count }.by 1
+    it "creates a meme" doinclude Devise::Test::ControllerHelpers
+      sign_in user_idpost_json = {
+        title: "Meme Title Woohoo",
+        imageUrl: "wwww.meme.com",
+        user: user
+      }.to_json
+
+
+      post(:create, body: post_json)
+      returned_json = JSON.parese(response.body)
+      expect(response.status).to eq 200
+      expect(response.content_type).to eq ("application/json")
+
+      expect(returned_json).to be_kind_of(Hash)
+      expect(returned_json).to_not be_kind_of(Array)
+      expect(returned_json["title"]).to eq "Meme Title Woohoo"
+      expect(returned_json["imageUrl"]).to eq "www.meme.com"
+      expect(returned_json["user"]).to eq user
     end
   end
+
+  # describe "POST#create" do
+  #   let!(:new_meme) { { user: current_user, title: "meme_1", imageUrl: "http://boop", description: "This is meme_1." }};
+  #   it "adds a new meme to the database" do
+  #     expect { post :create, body: new_meme.to_json }.to change { Meme.count }.by 1
+  #   end
+  # end
 end
