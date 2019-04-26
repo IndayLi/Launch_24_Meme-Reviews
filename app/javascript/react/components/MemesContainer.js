@@ -9,7 +9,6 @@ class MemesContainer extends Component {
     this.state={
       memes: []
     }
-
   }
 
   componentDidMount() {
@@ -39,7 +38,6 @@ class MemesContainer extends Component {
           user_id={meme.user_id}
           title={meme.title}
           url={meme.imageUrl}
-
         />
       )
     })

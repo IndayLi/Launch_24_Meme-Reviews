@@ -8,7 +8,6 @@ class Api::V1::MemesController < ApplicationController
 
   def create
     user_input = JSON.parse(request.body.read)
-
     meme = Meme.new(
       user: current_user,
       title: user_input["title"],
