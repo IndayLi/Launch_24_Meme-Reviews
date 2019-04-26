@@ -60,4 +60,14 @@ RSpec.describe Api::V1::MemesController, type: :controller do
       expect(response_json["description"]).not_to eql(meme_2.description)
     end
   end
+
+  describe "POST#create" do
+    let!(:user) { { email: "test-user@example.com", password: "password", password_confirmation: "password", role: "member" } };
+    # let!(:user_member) { FactoryBot.create(:user, role: "member") };
+    binding.pry
+    let!(:new_meme) { { user: current_user, title: "meme_1", imageUrl: "http://boop", description: "This is meme_1." }};
+    it "adds a new meme to the database" do
+      expect { post :create, body: new_meme.to_json }.to change { Meme.count }.by 1
+    end
+  end
 end
