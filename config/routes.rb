@@ -6,11 +6,16 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :memes, only: [:index, :create, :show] do
+<<<<<<< HEAD
         resources :reviews, only: [:index]
+=======
+        resources :reviews, only: [:create, :new]
+>>>>>>> 2aaaeb48d4facef1c7898c59821975a082ebe5cf
       end
     end
   end
 
-  resources :memes, only: [:index, :new, :create, :show]
-
+  resources :memes, only: [:index, :new, :show] do
+    resources :reviews, only: [:new]
+  end
 end
