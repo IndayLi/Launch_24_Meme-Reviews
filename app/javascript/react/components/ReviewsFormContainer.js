@@ -5,11 +5,11 @@ class ReviewsFormContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      rating: 0,
+      rating: 5,
       comment: ""
     };
     this.handleOnChange = this.handleOnChange.bind(this);
-    this.handleOnChange = this.handleOnChange.bind(this);
+    this.handleOnSubmit = this.handleOnSubmit.bind(this);
   };
 
   handleOnChange(event) {
@@ -21,10 +21,11 @@ class ReviewsFormContainer extends Component {
     event.preventDefault()
     let reviewPayload = {
       rating: this.state.rating,
-      comment: this.state.comment
+      comment: this.state.comment,
+      meme_id: this.props.meme.id
     };
 
-    fetch("/api/v1/memes", {
+    fetch(`/api/v1/memes/${this.props.meme.id}/reviews`, {
       credentials: "same-origin",
     	method: "POST",
     	body: JSON.stringify(reviewPayload),
@@ -43,17 +44,19 @@ class ReviewsFormContainer extends Component {
   		};
   	})
   	.then(response => response.json())
-  	.then(body => { })
+  	.then(body => {
+      // this.setState({reviews: this.state.reviews.concat(body.review) });
+    })
   	.catch(error => console.error(`Error in fetch: ${error.message}`));
 
     this.clearForm();
   };
 
   clearForm() {
-    this.setState(
-      rating: 0,
+    this.setState({
+      rating: 5,
       comment: ""
-    );
+    });
   };
 
   render() {
@@ -61,16 +64,22 @@ class ReviewsFormContainer extends Component {
       <div>
         <form onSubmit={this.handleOnSubmit}>
           <TextField
+            type="number"
             labelName="rating"
             inputName="rating"
             value={this.state.rating}
             handleOnChange={this.handleOnChange}
           />
           <TextField
-            lablelName="comment"
+            labelName="comment"
             inputName="comment"
             value={this.state.comment}
             handleOnChange={this.handleOnChange}
+          />
+          <input
+            type="submit"
+            value="submit"
+            className="button"
           />
         </form>
       </div>

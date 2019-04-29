@@ -18,9 +18,9 @@ RSpec.describe Api::V1::ReviewsController, type: :controller do
         meme_id: 1,
         user: user_reviewer
       }.to_json
-binding.pry
+
       prev_count = Review.count
-      post(:create, body: post_json)
+      post(:create, body: post_json) # there's something wrong with this!!!
       expect(Review.count).to eq(prev_count + 1)
     end
   end

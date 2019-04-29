@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import ReviewsFormContainer from './ReviewsFormContainer'
+
 
 class ShowContainer extends Component {
   constructor(props) {
@@ -33,6 +35,15 @@ class ShowContainer extends Component {
         <h2>{this.state.meme.title}</h2>
         <img src={this.state.meme.imageUrl}/>
         <p>{this.state.meme.description}</p>
+
+        <div>
+          <h3>REVIEWS</h3>
+          <div>
+            <ReviewsFormContainer
+              meme={this.state.meme}
+            />
+          </div>
+        </div>
       </div>
     );
   };

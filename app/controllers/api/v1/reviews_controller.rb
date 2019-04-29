@@ -6,7 +6,7 @@ class Api::V1::ReviewsController < ApplicationController
 
     review = Review.new(
       user: current_user,
-      meme_id: params[:id],
+      meme_id: user_input["meme_id"],
       rating: user_input["rating"],
       comment: user_input["comment"]
     )
