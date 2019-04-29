@@ -12,4 +12,4 @@ const MemeTile = props => {
   )
 }
 
-export default MemeTile
+export default MemeTile;

@@ -7,4 +7,7 @@ class User < ApplicationRecord
   def admin?
     role == "admin"
   end
+
+  has_many :memes
+  has_many :reviews
 end
