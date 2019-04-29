@@ -11,7 +11,6 @@ class ReviewsContainer extends Component {
 
   componentDidMount() {
     let memeId = this.props.memeId
-    debugger
     fetch(`/api/v1/memes/${memeId}/reviews`)
     .then(response => {
       if (response.ok) {
@@ -30,12 +29,13 @@ class ReviewsContainer extends Component {
     }
 
   render() {
-    debugger
     let reviewArray = this.state.reviews.map((review) => {
       return(
         <ReviewTile
           key={review.id}
           id={review.id}
+          timestamp={review.timestamp}
+          email={review.email}
           rating={review.rating}
           comment={review.comment}
         />

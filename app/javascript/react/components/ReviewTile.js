@@ -4,7 +4,8 @@ const ReviewTile = props => {
   return(
     <div>
       <dd>
-        <dl>User: {props.user}</dl>
+        <dl>{props.timestamp}</dl>
+        <dl>User: {props.email}</dl>
         <dl>Rating: {props.rating}</dl>
         <dl>Comment: {props.comment}</dl>
       </dd>
