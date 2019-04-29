@@ -19,9 +19,6 @@ class Api::V1::ReviewsController < ApplicationController
     end
   end
 
-  def show
-  end
-
   private
 
   def review_params
