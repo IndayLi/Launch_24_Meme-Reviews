@@ -18,8 +18,4 @@ describe("ReviewsContainer", () => {
     expect(wrapper.find('div').hasClass('reviews-container')).toEqual(true);
   });
 
-  it('should render the three DL tags for \'user\', \'rating\' and \'comment\'', () => {
-    expect(wrapper.find('dl').length).toEqual(3);
-  });
-
 });

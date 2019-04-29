@@ -5,7 +5,7 @@ const MemeTile = props => {
     <div>
       <dd>
         <dl>Title: {props.title}</dl>
-        <dl>Link: {props.url}</dl>
+        <dl><img src={props.url}/></dl>
         <br/>
       </dd>
     </div>

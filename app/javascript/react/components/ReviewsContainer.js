@@ -10,6 +10,7 @@ class ReviewsContainer extends Component {
   }
 
   componentDidMount() {
+    debugger
     let memeId = this.props.memeId
     fetch(`/api/v1/memes/${memeId}/reviews`)
     .then(response => {
@@ -35,7 +36,7 @@ class ReviewsContainer extends Component {
           key={review.id}
           id={review.id}
           timestamp={review.timestamp}
-          email={review.email}
+          username={review.username}
           rating={review.rating}
           comment={review.comment}
         />
@@ -48,7 +49,6 @@ class ReviewsContainer extends Component {
       </div>
     );
   }
-
 }
 
 export default ReviewsContainer;
