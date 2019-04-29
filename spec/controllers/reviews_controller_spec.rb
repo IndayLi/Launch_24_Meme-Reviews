@@ -3,7 +3,6 @@ require "rails_helper"
 DatabaseCleaner.clean_with(:truncation)
 
 RSpec.describe Api::V1::ReviewsController, type: :controller do
-
   describe "POST#create" do
     let!(:user_poster) { FactoryBot.create(:user, role: "member") };
     let!(:user_reviewer) { FactoryBot.create(:user, role: "member") };
