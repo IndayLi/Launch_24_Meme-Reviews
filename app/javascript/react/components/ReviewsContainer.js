@@ -25,7 +25,7 @@ class ReviewsContainer extends Component {
     .then(body => {
       this.setState({reviews: body})
     })
-      .catch(error => console.error(`Error in fetch: ${error.message}`));
+    .catch(error => console.error(`Error in fetch: ${error.message}`));
     }
 
   render() {
