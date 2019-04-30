@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ReviewsFormContainer from "./ReviewsFormContainer";
+import ReviewsContainer from "./ReviewsContainer";
 
 class ShowContainer extends Component {
   constructor(props) {
@@ -30,6 +31,7 @@ class ShowContainer extends Component {
 
   render() {
     let memeId = this.props.params.id;
+    debugger;
     return (
       <div>
         <h2>{this.state.meme.title}</h2>
@@ -39,6 +41,7 @@ class ShowContainer extends Component {
         <div>
           <h3>REVIEWS</h3>
           <div>
+            <ReviewsContainer />
             <ReviewsFormContainer memeId={memeId} />
           </div>
         </div>

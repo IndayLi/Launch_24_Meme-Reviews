@@ -1,37 +1,37 @@
-import React, { Component } from 'react'
-import ReviewTile from './ReviewTile'
+import React, { Component } from "react";
+import ReviewTile from "./ReviewTile";
 
 class ReviewsContainer extends Component {
   constructor(props) {
     super(props);
-    this.state={
+    this.state = {
       reviews: []
-    }
+    };
   }
 
   componentDidMount() {
-    let memeId = this.props.memeId
+    let memeId = this.props.memeId;
     fetch(`/api/v1/memes/${memeId}/reviews`)
-    .then(response => {
-      debugger
-      if (response.ok) {
-        return response;
-      } else {
-        let errorMessage = `${response.status}(${response.statusText})` ,
-        error = new Error(errorMessage);
-        throw(error);
-      }
-    })
-    .then(response => response.json())
-    .then(body => {
-      this.setState({reviews: body})
-    })
+      .then(response => {
+        debugger;
+        if (response.ok) {
+          return response;
+        } else {
+          let errorMessage = `${response.status}(${response.statusText})`,
+            error = new Error(errorMessage);
+          throw error;
+        }
+      })
+      .then(response => response.json())
+      .then(body => {
+        this.setState({ reviews: body });
+      })
       .catch(error => console.error(`Error in fetch: ${error.message}`));
-    }
+  }
 
   render() {
-    let reviewArray = this.state.reviews.map((review) => {
-      return(
+    let reviewArray = this.state.reviews.map(review => {
+      return (
         <ReviewTile
           key={review.id}
           id={review.id}
@@ -41,10 +41,9 @@ class ReviewsContainer extends Component {
           rating={review.rating}
           comment={review.comment}
         />
-      )
+      );
     });
-
-    return(
+    return (
       <div className="reviews-container">
         <p>{reviewArray}</p>
       </div>
