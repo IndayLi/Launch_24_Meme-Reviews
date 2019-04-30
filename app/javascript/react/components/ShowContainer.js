@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import ReviewsFormContainer from "./ReviewsFormContainer";
 import ReviewsContainer from "./ReviewsContainer";
+import ReviewsFormContainer from "./ReviewsFormContainer";
 
 class ShowContainer extends Component {
   constructor(props) {
@@ -37,12 +37,14 @@ class ShowContainer extends Component {
         <h2>{this.state.meme.title}</h2>
         <img src={this.state.meme.imageUrl} />
         <p>{this.state.meme.description}</p>
-
         <div>
           <h3>REVIEWS</h3>
           <div>
             <ReviewsContainer />
             <ReviewsFormContainer memeId={memeId} />
+          </div>
+          <div>
+            <ReviewsContainer memeId={memeId} />
           </div>
         </div>
       </div>

@@ -6,23 +6,22 @@ import ReviewsContainer from "../../app/javascript/react/components/ReviewsConta
 describe("ReviewsContainer", () => {
   let wrapper;
 
-  let reviews =
-  [
+  let reviews = [
     {
       id: 1,
       user_id: 1,
       meme_id: 1,
-      timestamp: 'April 29, 2019, 5:55 pm',
+      timestamp: "April 29, 2019, 5:55 pm",
       rating: 4,
-      comment: 'Test comment one'
+      comment: "Test comment one"
     },
     {
       id: 2,
       user_id: 1,
       meme_id: 1,
-      timestamp: 'April 29, 2019, 5:55 pm',
+      timestamp: "April 29, 2019, 5:55 pm",
       rating: 5,
-      comment: 'Test comment two'
+      comment: "Test comment two"
     }
   ];
 
@@ -34,19 +33,19 @@ describe("ReviewsContainer", () => {
       body: { reviews }
     });
 
-    wrapper = mount(<ReviewsContainer memeId={1}/>);
+    wrapper = mount(<ReviewsContainer memeId={1} />);
   });
 
   afterEach(fetchMock.restore);
 
-  it("renders the review container on the page", (done) => {
+  it("renders the review container on the page", done => {
     setTimeout(() => {
       expect(wrapper.find(ReviewsContainer)).toBePresent();
       done();
     }, 0);
   });
 
-  it("Adds a review to state after fetch", (done) => {
+  it("Adds a review to state after fetch", done => {
     setTimeout(() => {
       expect(wrapper.state().reviews).toEqual({ reviews });
       done();

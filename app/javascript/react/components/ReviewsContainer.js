@@ -13,7 +13,6 @@ class ReviewsContainer extends Component {
     let memeId = this.props.memeId;
     fetch(`/api/v1/memes/${memeId}/reviews`)
       .then(response => {
-        debugger;
         if (response.ok) {
           return response;
         } else {

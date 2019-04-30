@@ -1,17 +1,10 @@
 import testHelper from "./testHelper";
-
 import ReviewTile from "../../app/javascript/react/components/ReviewTile";
 
 describe("ReviewTile", () => {
-  let id,
-      meme_id,
-      timestamp,
-      username,
-      rating,
-      comment,
-      wrapper;
+  let id, meme_id, timestamp, username, rating, comment, wrapper;
 
-  beforeEach (() => {
+  beforeEach(() => {
     jasmineEnzyme();
     wrapper = mount(
       <ReviewTile
@@ -25,7 +18,7 @@ describe("ReviewTile", () => {
     );
   });
 
-  it("should render the \'ReviewTile\' component", () => {
+  it("should render the 'ReviewTile' component", () => {
     expect(wrapper.find(ReviewTile)).toBePresent();
   });
 
