@@ -44,7 +44,9 @@ class ReviewsFormContainer extends Component {
         }
       })
       .then(response => response.json())
-      .then(body => {})
+      .then(body => {
+        this.props.addReview(body.review);
+      })
       .catch(error => console.error(`Error in fetch: ${error.message}`));
 
     this.clearForm();

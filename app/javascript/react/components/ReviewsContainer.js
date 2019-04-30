@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ReviewTile from "./ReviewTile";
+import ReviewsFormContainer from "./ReviewsFormContainer";
 
 class ReviewsContainer extends Component {
   constructor(props) {
@@ -7,6 +8,11 @@ class ReviewsContainer extends Component {
     this.state = {
       reviews: []
     };
+    this.addReview = this.addReview.bind(this);
+  }
+
+  addReview(review) {
+    this.setState({ reviews: this.state.reviews.concat(review) });
   }
 
   componentDidMount() {
@@ -43,8 +49,15 @@ class ReviewsContainer extends Component {
       );
     });
     return (
-      <div className="reviews-container">
-        <p>{reviewArray}</p>
+      <div>
+        <h3>Reviews</h3>
+        <ReviewsFormContainer
+          memeId={this.props.memeId}
+          addReview={this.addReview}
+        />
+        <div className="reviews-container">
+          <p>{reviewArray}</p>
+        </div>
       </div>
     );
   }
