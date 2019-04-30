@@ -2,14 +2,9 @@ class Api::V1::ReviewsController < ApplicationController
   protect_from_forgery unless: -> { request.format.json? }
 
   def create
-    user_input = JSON.parse(request.body.read)
-
-    review = Review.new(
-      user: current_user,
-      meme_id: user_input["meme_id"],
-      rating: user_input["rating"],
-      comment: user_input["comment"]
-    )
+    input_data = review_params
+    input_data['user'] = current_user
+    review = Review.new(input_data)
 
     if review.save
       render json: { review: review }
@@ -22,6 +17,6 @@ class Api::V1::ReviewsController < ApplicationController
   private
 
   def review_params
-    require(:review).permit(:user_id, :meme_id, :rating, :comment)
+    params.require(:review).permit(:user_id, :meme_id, :rating, :comment)
   end
 end

@@ -14,12 +14,11 @@ RSpec.describe Api::V1::ReviewsController, type: :controller do
       post_json = {
         rating: 5,
         comment: "This is an example comment.",
-        meme_id: meme_1.id,
-        user: user_reviewer
-      }.to_json
+        meme_id: meme_1.id
+      }
 
       prev_count = Review.count
-      post(:create, params: {meme_id: meme_1.id}, body: post_json)
+      post(:create, params: {meme_id: meme_1.id, review: post_json})
 
       expect(Review.count).to eq(prev_count + 1)
     end
@@ -29,13 +28,12 @@ RSpec.describe Api::V1::ReviewsController, type: :controller do
       post_json = {
         rating: 5,
         comment: "This is an example comment.",
-        meme_id: meme_1.id,
-        user: user_reviewer
-      }.to_json
+        meme_id: meme_1.id
+      }
 
-      post(:create, params: {meme_id: meme_1.id}, body: post_json)
+      post(:create, params: {meme_id: meme_1.id, review: post_json})
       returned_json = JSON.parse(response.body)
-
+      binding.pry
       expect(returned_json).to be_kind_of(Hash)
       expect(returned_json).to_not be_kind_of(Array)
       expect(returned_json["review"]["rating"]).to eq 5

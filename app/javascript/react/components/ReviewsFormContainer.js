@@ -22,10 +22,10 @@ class ReviewsFormContainer extends Component {
     let reviewPayload = {
       rating: this.state.rating,
       comment: this.state.comment,
-      meme_id: this.props.meme.id
+      meme_id: this.props.memeId
     };
 
-    fetch(`/api/v1/memes/${this.props.meme.id}/reviews`, {
+    fetch(`/api/v1/memes/${this.props.memeId}/reviews`, {
       credentials: "same-origin",
       method: "POST",
       body: JSON.stringify(reviewPayload),
@@ -48,7 +48,7 @@ class ReviewsFormContainer extends Component {
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`)
     );
-    
+
     this.clearForm();
   };
 
