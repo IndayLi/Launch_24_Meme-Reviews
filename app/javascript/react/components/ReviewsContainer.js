@@ -35,6 +35,9 @@ class ReviewsContainer extends Component {
         <ReviewTile
           key={review.id}
           id={review.id}
+          memeId={this.props.memeId}
+          timestamp={review.timestamp}
+          username={review.username}
           rating={review.rating}
           comment={review.comment}
         />
@@ -47,7 +50,6 @@ class ReviewsContainer extends Component {
       </div>
     );
   }
-
 }
 
 export default ReviewsContainer;
