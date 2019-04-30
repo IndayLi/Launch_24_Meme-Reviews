@@ -5,26 +5,6 @@ import ReviewsContainer from '../../app/javascript/react/components/ReviewsConta
 describe("ShowContainer", () => {
   let wrapper, meme;
 
-  let fetch = () => {
-    // meme = {
-    //   id: 1,
-    //   title: "Momo",
-    //   imageUrl: "https://i.imgur.com/4wVB82o.png",
-    //   description: "Let's play a game...!",
-    //   user_id: 1
-    // };
-
-    fetchMock.get(`/api/v1/memes/${meme.id}`, {
-      status: 200,
-      body: { meme }
-    });
-
-    fetchMock.get(`/api/v1/memes/${meme.id}/reviews`, {
-      status: 200,
-      body: { test: "test" }
-    });
-  };
-
   beforeEach(() => {
     meme = {
       id: 1,
@@ -34,13 +14,22 @@ describe("ShowContainer", () => {
       user_id: 1
     };
 
+    fetchMock.get(`/api/v1/memes/${meme.id}`, {
+      status: 200,
+      body: meme
+    });
+
+    fetchMock.get(`/api/v1/memes/${meme.id}/reviews`, {
+      status: 200,
+      body: { test: "test" }
+    });
+
     wrapper = mount(<ShowContainer params={{ id: 1 }}/>);
   });
 
   afterEach(fetchMock.restore);
 
   it("renders the show container on the page", (done) => {
-    fetch()
     setTimeout(() => {
       expect(wrapper.find(ShowContainer)).toBePresent();
       expect(wrapper.find(ReviewsContainer)).toBePresent();
@@ -48,22 +37,26 @@ describe("ShowContainer", () => {
     }, 0);
   });
 
+  it("should render an h2 and img tag", () => {
+    expect(wrapper.find("h2")).toBePresent();
+    expect(wrapper.find("img")).toBePresent();
+  });
 
   it("updates state to contain meme", (done) => {
     setTimeout(() => {
-      expect(wrapper.state().meme).toEqual({})
-      done();
-    }, 0);
-    fetch();
-    setTimeout(() => {
-      expect(wrapper.state().meme).toEqual({})
+      expect(wrapper.state()).toEqual({meme: meme})
       done();
     }, 0);
   });
 
-
-
-
-
-
+  it("should render the following meme props", (done) => {
+    setTimeout(() => {
+      expect(wrapper.find('h2')).toHaveText("Momo");
+      expect(wrapper.find('img').props()).toEqual({
+        src: 'https://i.imgur.com/4wVB82o.png'
+      })
+      expect(wrapper.find('p')).toHaveText("Let's play a game...!");
+      done();
+    }, 0);
+  });
 });
