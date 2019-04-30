@@ -33,7 +33,7 @@ RSpec.describe Api::V1::ReviewsController, type: :controller do
 
       post(:create, params: {meme_id: meme_1.id, review: post_json})
       returned_json = JSON.parse(response.body)
-      binding.pry
+
       expect(returned_json).to be_kind_of(Hash)
       expect(returned_json).to_not be_kind_of(Array)
       expect(returned_json["review"]["rating"]).to eq 5
