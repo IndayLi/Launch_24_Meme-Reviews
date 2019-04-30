@@ -6,10 +6,9 @@ describe("ReviewsContainer", () => {
   let wrapper;
 
   beforeEach(() => {
-    jasmineEnzyme();
-
     wrapper = mount(
       <ReviewsContainer
+        memeId={3}
       />
     );
   });

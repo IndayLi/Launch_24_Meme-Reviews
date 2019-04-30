@@ -10,7 +10,6 @@ class ReviewsContainer extends Component {
   }
 
   componentDidMount() {
-    debugger
     let memeId = this.props.memeId
     fetch(`/api/v1/memes/${memeId}/reviews`)
     .then(response => {
@@ -35,6 +34,7 @@ class ReviewsContainer extends Component {
         <ReviewTile
           key={review.id}
           id={review.id}
+          memeId={this.props.memeId}
           timestamp={review.timestamp}
           username={review.username}
           rating={review.rating}
