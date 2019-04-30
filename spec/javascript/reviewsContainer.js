@@ -4,7 +4,6 @@ import ReviewsContainer from "../../app/javascript/react/components/ReviewsConta
 
 describe("ReviewsContainer", () => {
   let wrapper;
-
   let reviews = [
     {
       id: 1,
