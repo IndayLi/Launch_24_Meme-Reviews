@@ -1,5 +1,5 @@
 require 'rails_helper'
 
-RSpec.describe ReviewsController, type: :controller do
+RSpec.describe Api::V1::ReviewsController, type: :controller do
 
 end
