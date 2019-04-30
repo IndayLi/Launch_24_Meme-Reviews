@@ -1,6 +1,5 @@
 import testHelper from "./testHelper";
 import fetchMock from "fetch-mock";
-
 import ReviewsContainer from "../../app/javascript/react/components/ReviewsContainer";
 
 describe("ReviewsContainer", () => {
