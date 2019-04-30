@@ -1,5 +1,4 @@
 import testHelper from "./testHelper";
-
 import ReviewsContainer from "../../app/javascript/react/components/ReviewsContainer";
 
 describe("ReviewsContainer", () => {
@@ -16,5 +15,4 @@ describe("ReviewsContainer", () => {
   it('should render a div element with the class of \'reviews-container\'', () => {
     expect(wrapper.find('div').hasClass('reviews-container')).toEqual(true);
   });
-
 });
