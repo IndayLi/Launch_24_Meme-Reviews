@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ReviewsContainer from './ReviewsContainer'
+import ReviewsFormContainer from './ReviewsFormContainer'
 
 class ShowContainer extends Component {
   constructor(props) {
@@ -12,20 +13,20 @@ class ShowContainer extends Component {
   componentDidMount() {
     let memeId = this.props.params.id;
     fetch(`/api/v1/memes/${memeId}`)
-  	.then(response => {
-  		if (response.ok) {
-  			return response;
-  		} else {
-  			let errorMessage = `${response.status} (${response.statusText})`,
-  			error = new Error(errorMessage);
-  			throw(error);
-  		}
-  	})
-  	.then(response => response.json())
-  	.then(body => {
-  		this.setState({ meme: body })
-  	})
-  	.catch(error => console.error(`Error in fetch: ${error.message}`));
+      .then(response => {
+        if (response.ok) {
+          return response;
+        } else {
+          let errorMessage = `${response.status} (${response.statusText})`,
+          error = new Error(errorMessage);
+          throw(error);
+        }
+      })
+      .then(response => response.json())
+      .then(body => {
+        this.setState({ meme: body })
+      })
+      .catch(error => console.error(`Error in fetch: ${error.message}`));
   };
 
   render() {
@@ -35,9 +36,19 @@ class ShowContainer extends Component {
         <h2>{this.state.meme.title}</h2>
         <img src={this.state.meme.imageUrl}/>
         <p>{this.state.meme.description}</p>
-        <ReviewsContainer
-          memeId={memeId}
-        />
+        <div>
+          <h3>REVIEWS</h3>
+          <div>
+            <ReviewsFormContainer
+              memeId={memeId}
+            />
+          </div>
+          <div>
+            <ReviewsContainer
+              memeId={memeId}
+            />
+          </div>
+        </div>
       </div>
     );
   };

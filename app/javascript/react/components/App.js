@@ -4,9 +4,7 @@ import MemesContainer from './MemesContainer'
 import ShowContainer from "./ShowContainer";
 import MemesFormContainer from './MemesFormContainer';
 
-
 export const App = (props) => {
-
   return (
     <div>
       <Router history={browserHistory}>
