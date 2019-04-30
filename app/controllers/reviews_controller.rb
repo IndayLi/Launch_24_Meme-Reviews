@@ -1,12 +1,8 @@
-class MemesController < ApplicationController
+class ReviewsController < ApplicationController
   before_action :authorize_user, except: [:index, :show]
 
-  def index
-    @memes = Meme.all
-  end
-
   def new
-    @meme = Meme.new
+    @review = Review.new
     @user = current_user
   end
 
