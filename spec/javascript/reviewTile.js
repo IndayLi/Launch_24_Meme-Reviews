@@ -1,5 +1,4 @@
 import testHelper from "./testHelper";
-
 import ReviewTile from "../../app/javascript/react/components/ReviewTile";
 
 describe("ReviewTile", () => {
@@ -29,5 +28,4 @@ describe("ReviewTile", () => {
       'Username: Doglover22'
     )
   });
-
 })
