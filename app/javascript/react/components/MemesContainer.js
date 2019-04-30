@@ -22,11 +22,11 @@ class MemesContainer extends Component {
           throw(error);
         }
         })
-        .then(response => response.json())
-        .then(body => {
-          this.setState({memes: body})
-        })
-        .catch(error => console.error(`Error in fetch: ${error.message}`));
+      .then(response => response.json())
+      .then(body => {
+        this.setState({memes: body})
+      })
+      .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
   render() {

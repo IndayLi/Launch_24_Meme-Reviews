@@ -8,7 +8,36 @@
 
 require_relative "../spec/support/factory_bot.rb"
 
-FactoryBot.create(:meme)
-FactoryBot.create(:meme)
-FactoryBot.create(:meme)
-FactoryBot.create(:meme)
+if Rails.env.development?
+
+  User.delete_all
+  Meme.delete_all
+  Review.delete_all
+
+  meme_1 = FactoryBot.create(:meme)
+  meme_2 = FactoryBot.create(:meme)
+  meme_3 = FactoryBot.create(:meme)
+  meme_4 = FactoryBot.create(:meme)
+  meme_5 = FactoryBot.create(:meme)
+  meme_6 = FactoryBot.create(:meme)
+  meme_7 = FactoryBot.create(:meme)
+  meme_8 = FactoryBot.create(:meme)
+
+  FactoryBot.create(:review, meme: meme_1)
+  FactoryBot.create(:review, meme: meme_1)
+
+  FactoryBot.create(:review, meme: meme_2)
+  FactoryBot.create(:review, meme: meme_2)
+
+  FactoryBot.create(:review, meme: meme_3)
+  FactoryBot.create(:review, meme: meme_3)
+
+  FactoryBot.create(:review, meme: meme_4)
+  FactoryBot.create(:review, meme: meme_4)
+
+  FactoryBot.create(:review, meme: meme_5)
+  FactoryBot.create(:review, meme: meme_5)
+
+  FactoryBot.create(:review, meme: meme_8)
+  FactoryBot.create(:review, meme: meme_8)
+end

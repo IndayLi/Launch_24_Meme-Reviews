@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import ReviewsContainer from './ReviewsContainer'
 import ReviewsFormContainer from './ReviewsFormContainer'
 
 class ShowContainer extends Component {
@@ -35,11 +36,15 @@ class ShowContainer extends Component {
         <h2>{this.state.meme.title}</h2>
         <img src={this.state.meme.imageUrl}/>
         <p>{this.state.meme.description}</p>
-
         <div>
           <h3>REVIEWS</h3>
           <div>
             <ReviewsFormContainer
+              memeId={memeId}
+            />
+          </div>
+          <div>
+            <ReviewsContainer
               memeId={memeId}
             />
           </div>

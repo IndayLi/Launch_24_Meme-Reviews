@@ -1,6 +1,12 @@
 class Api::V1::ReviewsController < ApplicationController
   protect_from_forgery unless: -> { request.format.json? }
 
+  def index
+    @meme = Meme.find(params[:meme_id])
+    @reviews = @meme.reviews
+    render json: @reviews
+  end
+
   def create
     input_data = review_params
     input_data['user'] = current_user
