@@ -78,7 +78,7 @@ class ReviewsFormContainer extends Component {
           />
           <input
             type="submit"
-            value="submit"
+            value="Submit"
             className="button"
           />
         </form>
