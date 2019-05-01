@@ -30,7 +30,6 @@ class MemesContainer extends Component {
   }
 
   render() {
-    let memeColumnLength = Math.ceil(this.state.memes.length / 4)
     let memes = this.state.memes.map(meme => {
       return (
         <MemeTile
