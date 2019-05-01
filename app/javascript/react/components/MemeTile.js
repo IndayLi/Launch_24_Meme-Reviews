@@ -4,7 +4,9 @@ const MemeTile = props => {
   return(
     <div className="tile">
       <dd>
-        <dl><img src={props.imageUrl}/></dl>
+        <dl>
+            <img src={props.imageUrl}/>
+        </dl>
       </dd>
     </div>
   )
