@@ -23,9 +23,10 @@
  }
 
  body {
-   background-color: #CBCBCB;
+   background-color: #F0F2EF;
    font-family: 'Open Sans', sans-serif;
  }
+
 
  /* HEADER CSS BELOW */
 
@@ -78,6 +79,7 @@
    color: #f0f0f0;
  }
 
+
  /* GALLERY CSS BELOW */
 
  #gallery {
@@ -97,3 +99,61 @@
  #gallery img:hover {
    opacity: 1;
  }
+
+
+ /* SHOW PAGE BELOW */
+
+#show-page {
+   padding: 50px;
+}
+
+#show-page img {
+   border: 3px solid #63444a;
+   border-radius: 10px;
+   box-shadow: 4px 4px 6px;
+   float: right;
+   max-width: 55vw;
+}
+
+#show-text {
+   box-shadow: 4px 4px 6px #111;
+   width: 45%;
+}
+
+#show-page h2 {
+   background-color: rgba(103,66,88,0.9);
+   color: #8BBFBB;
+   font-family: 'Fjalla One', sans-serif;
+   font-size: 40px;
+   letter-spacing: 1px;
+   padding: 0px 15px;
+   position: relative;
+   text-transform: uppercase;
+   text-shadow: 1px 1px 2px #111;
+}
+
+@media (max-width: 700px) {
+   #show-page img {
+      border: 3px solid #63444a;
+      border-radius: 10px;
+      box-shadow: 4px 4px 6px;
+      float: none;
+      margin: 0 0 30px 0;
+      width: 100vw;
+   }
+
+   #show-page h2 {
+      left: 0;
+      width: 80vw;
+   }
+}
+
+#show-page p {
+   /* background-image: linear-gradient(#8BBFBB, transparent); */
+   background-color: #CBCBCB;
+   color: #111;
+   letter-spacing: 1px;
+   min-height: 30vh;
+   padding: 5px 15px;
+   position: relative;
+}

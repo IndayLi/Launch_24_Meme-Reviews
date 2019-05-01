@@ -32,10 +32,12 @@ class ShowContainer extends Component {
     let memeId = this.props.params.id;
 
     return (
-      <div>
-        <h2>{this.state.meme.title}</h2>
+      <div id="show-page">
         <img src={this.state.meme.imageUrl} />
-        <p>{this.state.meme.description}</p>
+        <div id="show-text">
+          <h2>{this.state.meme.title}</h2>
+          <p>{this.state.meme.description}</p>
+        </div>
         <div>
           <div>
             <ReviewsContainer memeId={memeId} />
