@@ -5,9 +5,17 @@ class MemesController < ApplicationController
     @memes = Meme.all
   end
 
+  def show
+    @current_user = current_user
+  end
+
   def new
     @meme = Meme.new
     @user = current_user
+  end
+
+  def delete
+    
   end
 
   protected
