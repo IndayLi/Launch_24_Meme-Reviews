@@ -14,10 +14,6 @@ class MemesController < ApplicationController
     @user = current_user
   end
 
-  def delete
-    
-  end
-
   protected
 
   def authorize_user

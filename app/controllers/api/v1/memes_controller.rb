@@ -27,6 +27,9 @@ class Api::V1::MemesController < ApplicationController
     @user = current_user
   end
 
+  def delete
+  end
+
   private
 
   def meme_params

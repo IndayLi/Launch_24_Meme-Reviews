@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :memes, only: [:index, :new, :show, :delete] do
+  resources :memes, only: [:index, :new, :show] do
     resources :reviews, only: [:new]
   end
 end
