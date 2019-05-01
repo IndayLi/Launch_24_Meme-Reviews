@@ -15,3 +15,85 @@
  *= require foundation_and_overrides
 
  */
+
+
+ * {
+   box-sizing: border-box;
+   margin: 0;
+ }
+
+ body {
+   background-color: #CBCBCB;
+   font-family: 'Open Sans', sans-serif;
+ }
+
+ /* HEADER CSS BELOW */
+
+ #header {
+   background-color: rgba(139,191,187, 0.75);
+   height: 40px;
+   margin-top: 40px;
+   opacity: 0.9;
+   position: relative;
+ }
+
+ #header h1 {
+   color: rgb(79,51,68);
+   font-family: 'Fjalla One', sans-serif;
+   font-size: 70px;
+   letter-spacing: 1px;
+   position: absolute;
+   right: 20px;
+   text-shadow: 3px 3px 3px #111;
+   top: -40px;
+ }
+
+ #nav {
+   background-color: rgb(103,66,88);
+   box-shadow: 4px 4px 8px;
+   height: 25px;
+   opacity: 0.9;
+   position: sticky;
+   top: 0;
+   width: 100vw;
+   z-index: 100;
+ }
+
+ #nav span {
+   float: right;
+ }
+
+ #nav a {
+   color: #8BBFBB;
+   font-size: 15px;
+   font-weight: bold;
+   letter-spacing: 1px;
+   padding: 0px 15px;
+   text-decoration: none;
+   text-transform: uppercase;
+   transition: 0.5s;
+ }
+
+ #nav a:hover {
+   color: #f0f0f0;
+ }
+
+ /* GALLERY CSS BELOW */
+
+ #gallery {
+   columns: 4 200px;
+   margin: 50px 15vw;
+ }
+
+ #gallery img {
+   border: 3px solid #63444a;
+   border-radius: 10px;
+   box-shadow: 4px 4px 6px;
+   object-fit: cover;
+   opacity: 0.6;
+   transition: 0.75s;
+ }
+
+ #gallery img:hover {
+   opacity: 1;
+ }

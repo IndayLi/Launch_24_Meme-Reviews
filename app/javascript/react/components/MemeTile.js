@@ -2,11 +2,9 @@ import React, { Component } from 'react'
 
 const MemeTile = props => {
   return(
-    <div>
+    <div className="tile">
       <dd>
-        <dl>Title: {props.title}</dl>
-        <dl><img src={props.url}/></dl>
-        <br/>
+        <dl><img src={props.imageUrl}/></dl>
       </dd>
     </div>
   )
