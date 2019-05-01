@@ -11,6 +11,6 @@ feature 'user sees list of memes', %Q{
 
     visit '/'
 
-    expect(page).to have_content("Meme Reviews")
+    expect(page).to have_content("meme reviews")
   end
 end
