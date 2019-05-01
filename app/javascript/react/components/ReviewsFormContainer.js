@@ -10,15 +10,15 @@ class ReviewsFormContainer extends Component {
     };
     this.handleOnChange = this.handleOnChange.bind(this);
     this.handleOnSubmit = this.handleOnSubmit.bind(this);
-  };
+  }
 
   handleOnChange(event) {
-    let newReview = event.target.value
-    this.setState({[event.target.name]: newReview})
-  };
+    let newReview = event.target.value;
+    this.setState({ [event.target.name]: newReview });
+  }
 
   handleOnSubmit(event) {
-    event.preventDefault()
+    event.preventDefault();
     let reviewPayload = {
       rating: this.state.rating,
       comment: this.state.comment,
@@ -30,37 +30,37 @@ class ReviewsFormContainer extends Component {
       method: "POST",
       body: JSON.stringify(reviewPayload),
       headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
+        Accept: "application/json",
+        "Content-Type": "application/json"
       }
     })
-    .then(response => {
-      if (response.ok) {
-        return response;
-      } else {
-        let errorMessage = `${response.status} (${response.statusText})`,
-        error = new Error(errorMessage);
-        throw(error);
-      };
-    })
-    .then(response => response.json())
-    .then(body => {
-    })
-    .catch(error => console.error(`Error in fetch: ${error.message}`)
-    );
+      .then(response => {
+        if (response.ok) {
+          return response;
+        } else {
+          let errorMessage = `${response.status} (${response.statusText})`,
+            error = new Error(errorMessage);
+          throw error;
+        }
+      })
+      .then(response => response.json())
+      .then(body => {
+        this.props.addReview(body.review);
+      })
+      .catch(error => console.error(`Error in fetch: ${error.message}`));
 
     this.clearForm();
-  };
+  }
 
   clearForm() {
     this.setState({
       rating: 5,
       comment: ""
     });
-  };
+  }
 
   render() {
-    return(
+    return (
       <div>
         <form onSubmit={this.handleOnSubmit}>
           <TextField
@@ -76,15 +76,11 @@ class ReviewsFormContainer extends Component {
             value={this.state.comment}
             handleOnChange={this.handleOnChange}
           />
-          <input
-            type="submit"
-            value="Submit"
-            className="button"
-          />
+          <input type="submit" value="Submit" className="button" />
         </form>
       </div>
     );
-  };
-};
+  }
+}
 
 export default ReviewsFormContainer;
