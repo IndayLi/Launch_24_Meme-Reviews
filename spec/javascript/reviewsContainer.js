@@ -26,8 +26,6 @@ describe("ReviewsContainer", () => {
   ];
 
   beforeEach(() => {
-    jasmineEnzyme();
-
     fetchMock.get(`/api/v1/memes/1/reviews`, {
       status: 200,
       body: { reviews }

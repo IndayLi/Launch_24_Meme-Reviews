@@ -5,7 +5,6 @@ describe("ReviewTile", () => {
   let id, meme_id, timestamp, username, rating, comment, wrapper;
 
   beforeEach(() => {
-    jasmineEnzyme();
     wrapper = mount(
       <ReviewTile
         id={1}
