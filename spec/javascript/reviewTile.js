@@ -2,30 +2,41 @@ import testHelper from "./testHelper";
 import ReviewTile from "../../app/javascript/react/components/ReviewTile";
 
 describe("ReviewTile", () => {
-  let wrapper,
-      timestamp,
-      username,
-      rating,
-      comment;
+  let id, meme_id, timestamp, username, rating, comment, wrapper;
 
   beforeEach(() => {
     wrapper = mount(
       <ReviewTile
-        key={5}
-        id={5}
-        memeId={1}
-        timestamp={'April 29, 2019, 5:55 pm'}
-        username={'Doglover22'}
+        id={1}
+        meme_id={3}
+        timestamp={"April 29, 2019, 5:55 pm"}
+        username={"Doglover22"}
         rating={4}
-        comment={'Wow this is so cool!'}
+        comment={"This is the first review comment"}
       />
     );
   });
 
-  it('should render at least one div tag with the className of \'review-tile\', if there are reviews posted', () => {
-    //expect(wrapper.find('div').hasClass('reviews-tile')).toEqual(true);
-    expect(wrapper.find('.review-tile').text()).toContain(
-      'Username: Doglover22'
-    )
+  it("should render the 'ReviewTile' component", () => {
+    expect(wrapper.find(ReviewTile)).toBePresent();
   });
-})
+
+  it("should render the ReviewTile component with its specific props", () => {
+    expect(wrapper.find(ReviewTile).props()).toEqual({
+      id: 1,
+      meme_id: 3,
+      timestamp: "April 29, 2019, 5:55 pm",
+      username: "Doglover22",
+      rating: 4,
+      comment: "This is the first review comment"
+    });
+  });
+
+  it("should render a dd tag", () => {
+    expect(wrapper.find("dd")).toBePresent();
+  });
+
+  it("should render four dl tags", () => {
+    expect(wrapper.find("dl").length).toEqual(4);
+  });
+});

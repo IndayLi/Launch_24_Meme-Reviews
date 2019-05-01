@@ -1,36 +1,42 @@
-import React, { Component } from 'react'
-import ReviewTile from './ReviewTile'
+import React, { Component } from "react";
+import ReviewTile from "./ReviewTile";
+import ReviewsFormContainer from "./ReviewsFormContainer";
 
 class ReviewsContainer extends Component {
   constructor(props) {
     super(props);
-    this.state={
+    this.state = {
       reviews: []
-    }
+    };
+    this.addReview = this.addReview.bind(this);
+  }
+
+  addReview(review) {
+    this.setState({ reviews: this.state.reviews.concat(review) });
   }
 
   componentDidMount() {
-    let memeId = this.props.memeId
+    let memeId = this.props.memeId;
     fetch(`/api/v1/memes/${memeId}/reviews`)
-    .then(response => {
-      if (response.ok) {
-        return response;
-      } else {
-        let errorMessage = `${response.status}(${response.statusText})` ,
-        error = new Error(errorMessage);
-        throw(error);
-      }
-    })
-    .then(response => response.json())
-    .then(body => {
-      this.setState({reviews: body})
-    })
-    .catch(error => console.error(`Error in fetch: ${error.message}`));
-    }
+      .then(response => {
+        if (response.ok) {
+          return response;
+        } else {
+          let errorMessage = `${response.status}(${response.statusText})`,
+            error = new Error(errorMessage);
+          throw error;
+        }
+      })
+      .then(response => response.json())
+      .then(body => {
+        this.setState({ reviews: body });
+      })
+      .catch(error => console.error(`Error in fetch: ${error.message}`));
+  }
 
   render() {
-    let reviewArray = this.state.reviews.map((review) => {
-      return(
+    let reviewArray = this.state.reviews.map(review => {
+      return (
         <ReviewTile
           key={review.id}
           id={review.id}
@@ -40,12 +46,18 @@ class ReviewsContainer extends Component {
           rating={review.rating}
           comment={review.comment}
         />
-      )
+      );
     });
-
-    return(
-      <div className="reviews-container">
-        {reviewArray}
+    return (
+      <div>
+        <h3>Reviews</h3>
+        <ReviewsFormContainer
+          memeId={this.props.memeId}
+          addReview={this.addReview}
+        />
+        <div className="reviews-container">
+          <p>{reviewArray}</p>
+        </div>
       </div>
     );
   }

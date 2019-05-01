@@ -19,7 +19,7 @@ RSpec.describe Api::V1::ReviewsController, type: :controller do
 
       prev_count = Review.count
       post(:create, params: {meme_id: meme_1.id, review: post_json})
-      
+
       expect(Review.count).to eq(prev_count + 1)
     end
 
