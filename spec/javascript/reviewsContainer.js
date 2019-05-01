@@ -1,11 +1,9 @@
 import testHelper from "./testHelper";
 import fetchMock from "fetch-mock";
-
 import ReviewsContainer from "../../app/javascript/react/components/ReviewsContainer";
 
 describe("ReviewsContainer", () => {
   let wrapper;
-
   let reviews = [
     {
       id: 1,
@@ -30,7 +28,6 @@ describe("ReviewsContainer", () => {
       status: 200,
       body: { reviews }
     });
-
     wrapper = mount(<ReviewsContainer memeId={1} />);
   });
 
