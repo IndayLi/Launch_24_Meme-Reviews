@@ -6,7 +6,8 @@ class ShowContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      meme: {}
+      meme: {},
+      current_user: "", 
     };
   };
 
@@ -24,12 +25,21 @@ class ShowContainer extends Component {
       })
       .then(response => response.json())
       .then(body => {
-        this.setState({ meme: body })
+        this.setState({ meme: body.meme, current_user: body.current_user })
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`));
   };
 
+  setUserMatchesMemeCreator () => {
+    if this.state.meme.user_id === this.state.current_user
+      set
+
+  }
+
+
+
   render() {
+    debugger
     let memeId = this.props.params.id;
     return(
       <div>
