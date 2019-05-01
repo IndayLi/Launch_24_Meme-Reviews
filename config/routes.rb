@@ -14,4 +14,6 @@ Rails.application.routes.draw do
   resources :memes, only: [:index, :new, :show] do
     resources :reviews, only: [:new]
   end
+
+  resources :reviews
 end

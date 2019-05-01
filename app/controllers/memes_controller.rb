@@ -3,6 +3,7 @@ class MemesController < ApplicationController
 
   def index
     @memes = Meme.all
+    @user = current_user
   end
 
   def show
@@ -11,8 +12,9 @@ class MemesController < ApplicationController
 
   def new
     @meme = Meme.new
-    @user = current_user
   end
+
+
 
   protected
 

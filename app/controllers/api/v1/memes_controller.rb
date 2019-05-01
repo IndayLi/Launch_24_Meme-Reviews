@@ -23,14 +23,15 @@ class Api::V1::MemesController < ApplicationController
 
   def show
     meme = Meme.find(params[:id])
-    render json: meme
-    @user = current_user
-  end
-
-  def delete
+    current_user = current_user_1
+    render json: {meme: meme, current_user: current_user}
   end
 
   private
+
+  def current_user
+    current_user.id
+  end
 
   def meme_params
     require(:meme).permit(:user_id, :title, :imageUrl, :description)
