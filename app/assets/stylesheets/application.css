@@ -276,7 +276,8 @@ h2 {
    min-width: 45%;
 }
 
-#review-form .button {
+#review-form .button,
+#new-meme-form .button {
    background-color: rgba(103,66,88,0.9);
    width: 100%;
 }
@@ -284,7 +285,9 @@ h2 {
 
 /* SIGN UP FORM */
 
-.sign-up, .log-in {
+.sign-up,
+.log-in,
+.new-meme {
    margin: 0 auto;
    position: relative;
    top: 50px;
@@ -292,7 +295,7 @@ h2 {
 }
 
 .sign-up label,
-.log-in label:first-child{
+.log-in label:first-child {
    position: relative;
    top: 25px;
 }
@@ -309,6 +312,21 @@ h2 {
 .log-in .actions input {
    margin: 20px 0;
    width: 100%;
+}
+
+
+
+/* FLASH FORMATTING */
+
+.flash {
+   color: #63444a;
+   font-size: 24px;
+   font-weight: bold;
+   letter-spacing: 2px;
+   padding: 30px 0 0 0;
+   position: relative;
+   text-align: center;
+   text-transform: uppercase;
 }
 
 
