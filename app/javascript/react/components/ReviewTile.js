@@ -10,6 +10,9 @@ class ReviewTile extends Component {
     this.onDelete = this.onDelete.bind(this);
   }
   onDelete(event) {
+    let forceUpdate = () => {
+      return this.props.removeReview();
+    };
     event.preventDefault();
     fetch(`/api/v1/memes/${this.props.memeId}/reviews/${this.props.id}`, {
       credentials: "same-origin",
@@ -31,9 +34,7 @@ class ReviewTile extends Component {
       })
       .then(response => response.json())
       .then(body => {
-        //debugger;
-        //browserHistory.push("/");
-        //this.props.removeReview();
+        forceUpdate();
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`));
   }

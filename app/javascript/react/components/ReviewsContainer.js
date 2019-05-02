@@ -17,10 +17,7 @@ class ReviewsContainer extends Component {
   }
 
   removeReview(review) {
-    reviews = this.state.reviews.filter((item, index, arr) => {
-      return item.id != review.id;
-    });
-    this.setState({ reviews: reviews });
+    this.componentDidMount();
   }
 
   componentDidMount() {

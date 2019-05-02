@@ -23,7 +23,6 @@ class Api::V1::ReviewsController < ApplicationController
     review = Review.find(params[:id])
     if params[:review][:id] === current_user.id
       Review.find(params[:id]).delete
-      binding.pry
       render json: {deletedReview: review}
     else
       flash.now["You are not the owner of this review."]
