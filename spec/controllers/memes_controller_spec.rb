@@ -36,7 +36,9 @@ RSpec.describe Api::V1::MemesController, type: :controller do
   end
 
   describe "GET#show" do
+    let!(:user) { FactoryBot.create(:user, role: "member") };
     it "returns successful response with json-formatted data" do
+      sign_in user
       get :show, params: {id: meme_1.id}
 
       expect(response.status).to eq 200
@@ -44,8 +46,10 @@ RSpec.describe Api::V1::MemesController, type: :controller do
     end
 
     it "returns the correct meme data in a usable format" do
+      sign_in user
       get :show, params: {id: meme_1.id}
       response_json = JSON.parse(response.body)
+      response_json = response_json["meme"]
 
       expect(response_json["title"]).to eq meme_1.title
       expect(response_json["imageUrl"]).to eq meme_1.imageUrl

@@ -14,8 +14,6 @@ class MemesController < ApplicationController
     @meme = Meme.new
   end
 
-
-
   protected
 
   def authorize_user

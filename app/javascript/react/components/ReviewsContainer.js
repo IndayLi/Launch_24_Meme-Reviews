@@ -56,7 +56,7 @@ class ReviewsContainer extends Component {
           addReview={this.addReview}
         />
         <div className="reviews-container">
-          <p>{reviewArray}</p>
+          {reviewArray}
         </div>
       </div>
     );

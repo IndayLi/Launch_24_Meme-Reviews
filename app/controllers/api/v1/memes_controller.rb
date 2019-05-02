@@ -9,11 +9,12 @@ class Api::V1::MemesController < ApplicationController
   def create
     user_input = JSON.parse(request.body.read)
     meme = Meme.new(
-      user: current_user,
+      user_id: user_signed_in,
       title: user_input["title"],
       imageUrl: user_input["imageUrl"],
       description: user_input["description"]
     )
+
     if meme.save
       render json: { meme: meme }
     else
@@ -23,14 +24,20 @@ class Api::V1::MemesController < ApplicationController
 
   def show
     meme = Meme.find(params[:id])
-    current_user = current_user_1
-    render json: {meme: meme, current_user: current_user}
+    user = user_signed_in
+    render json: {meme: meme, current_user: user}
+  end
+
+  def destroy
+    meme = Meme.find(params[:id])
+    meme.delete
+    render json: {id: params[:id]}
   end
 
   private
 
-  def current_user
-    current_user.id
+  def user_signed_in
+    current_user
   end
 
   def meme_params

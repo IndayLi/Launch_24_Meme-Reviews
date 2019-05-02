@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ReviewsContainer from "./ReviewsContainer";
+import ReviewsFormContainer from "./ReviewsFormContainer"
 
 class ShowContainer extends Component {
   constructor(props) {
@@ -7,11 +8,14 @@ class ShowContainer extends Component {
     this.state = {
       meme: {},
       current_user: "",
+      meme_is_current_user: false
     };
-  }
+    this.deleteMeme = this.deleteMeme.bind(this)
 
+  }
   componentDidMount() {
     let memeId = this.props.params.id;
+
     fetch(`/api/v1/memes/${memeId}`)
       .then(response => {
         if (response.ok) {
@@ -24,20 +28,42 @@ class ShowContainer extends Component {
       })
       .then(response => response.json())
       .then(body => {
-        this.setState({ meme: body.meme, current_user: body.current_user })
+        let match
+        if (body.meme.user_id === body.current_user.id){
+          match = true
+        }
+        this.setState({ meme: body.meme, current_user: body.current_user.id, meme_is_current_user: match })
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
-  setUserMatchesMemeCreator () => {
-    
+  deleteMeme(){
+    event.preventDefault()
+    let memeToDelete = this.state.meme
+    let memeId = this.state.meme.id;
+
+    fetch(`/api/v1/memes/${memeId}`, {
+      credentials: 'same-origin',
+      method: 'DELETE',
+      body: JSON.stringify(memeToDelete)
+    })
+      .then(response => {
+        if (response.ok) {
+          return response;
+        } else {
+          let errorMessage = `${response.status}(${response.statusText})` ,
+          error = new Error(errorMessage);
+          throw(error);
+        }
+      })
+      .then(response => response.json())
+      .then(body => {
+        return window.location.href = "/memes"
+      })
+      .catch(error => console.error(`Error in fetch: ${error.message}`))
   }
 
-
-
   render() {
-    debugger
-    let memeId = this.props.params.id;
 
     return (
       <div>
@@ -45,17 +71,11 @@ class ShowContainer extends Component {
         <img src={this.state.meme.imageUrl} />
         <p>{this.state.meme.description}</p>
         <div>
-          <button type="button"> </button>
+          <button type="button" onClick={this.deleteMeme}>Delete</button>
         </div>
         <div>
-          <h3>REVIEWS</h3>
           <div>
-            <ReviewsFormContainer
-              memeId={memeId}
-            />
-          </div>
-          <div>
-            <ReviewsContainer memeId={memeId} />
+            <ReviewsContainer memeId={this.props.params.id} />
           </div>
         </div>
       </div>
