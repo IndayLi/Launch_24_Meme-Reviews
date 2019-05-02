@@ -33,17 +33,15 @@ class ShowContainer extends Component {
 
     return (
       <div id="show-page">
-        <img src={this.state.meme.imageUrl} />
+        <div id="show-image">
+          <img src={this.state.meme.imageUrl} />
+        </div>
         <div id="show-text">
           <h2>{this.state.meme.title}</h2>
           <div id="meme-description">
             <p>{this.state.meme.description}</p>
           </div>
-        </div>
-        <div>
-          <div>
-            <ReviewsContainer memeId={memeId} />
-          </div>
+          <ReviewsContainer memeId={memeId} />
         </div>
       </div>
     );

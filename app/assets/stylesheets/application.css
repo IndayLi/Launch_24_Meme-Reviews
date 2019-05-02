@@ -115,6 +115,10 @@
   padding: 30px 5vw;
 }
 
+#show-page #show-image {
+   text-align: center;
+}
+
 #show-page img {
    border: 3px solid #63444a;
    border-radius: 10px;
@@ -125,6 +129,7 @@
 
 #show-text {
    grid-area: meme-info;
+   height: 200px;
 }
 
 #show-page h2 {
