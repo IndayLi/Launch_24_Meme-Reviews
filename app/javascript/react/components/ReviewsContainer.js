@@ -54,7 +54,7 @@ class ReviewsContainer extends Component {
           username={review.username}
           rating={review.rating}
           comment={review.comment}
-          currentUser={this.props.currentUser.id}
+          currentUser={this.props.currentUser}
           forceRender={this.forceRender}
         />
       );
