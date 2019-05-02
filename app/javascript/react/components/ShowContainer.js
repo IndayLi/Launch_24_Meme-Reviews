@@ -36,7 +36,9 @@ class ShowContainer extends Component {
         <img src={this.state.meme.imageUrl} />
         <div id="show-text">
           <h2>{this.state.meme.title}</h2>
-          <p>{this.state.meme.description}</p>
+          <div id="meme-description">
+            <p>{this.state.meme.description}</p>
+          </div>
         </div>
         <div>
           <div>
