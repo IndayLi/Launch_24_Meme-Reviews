@@ -28,15 +28,7 @@ class ReviewEditForm extends Component {
       id: this.props.id
     };
 
-    fetch(`/api/v1/memes/${this.props.memeId}/reviews/${this.props.id}/edit`, {
-      credentials: "same-origin",
-      method: "EDIT",
-      body: JSON.stringify(reviewPayload),
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      }
-    })
+    fetch(`/api/v1/memes/${this.props.memeId}/reviews/${this.props.id}/edit`)
       .then(response => {
         if (response.ok) {
           return response;
