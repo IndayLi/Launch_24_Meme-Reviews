@@ -162,7 +162,7 @@ h2 {
 }
 
 #show-page h2 .memeButtons {
-  bottom: -40px;
+  bottom: -50px;
   display: flex;
   justify-content: space-between;
   position: absolute;
@@ -277,7 +277,8 @@ h2 {
 }
 
 #review-form .button,
-#new-meme-form .button {
+#new-meme-form .button,
+.review-form-edit .button {
    background-color: rgba(103,66,88,0.9);
    width: 100%;
 }

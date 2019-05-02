@@ -103,7 +103,6 @@ class ShowContainer extends Component {
                   <path d="M0 0h24v24H0z" fill="none" />
                 </svg>
               </div>
-
             </div>
           </h2>
           <div id="meme-description">
