@@ -50,7 +50,7 @@ describe("ShowContainer", () => {
 
   it("should render the following meme props", done => {
     setTimeout(() => {
-      expect(wrapper.find("h2").node.innerHTML).toEqual("Momo");
+      expect(wrapper.find("h2").node.innerHTML).toContain("Momo");
       expect(wrapper.find("img").props()).toEqual({
         src: "https://i.imgur.com/4wVB82o.png"
       });
