@@ -1,14 +1,26 @@
 import React, { Component } from "react";
 import { browserHistory } from "react-router";
+import ReviewEditForm from "./ReviewEditForm";
 
 class ReviewTile extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      owner: {}
+      owner: {},
+      formEdit: false
     };
     this.onDelete = this.onDelete.bind(this);
+    this.onEdit = this.onEdit.bind(this);
   }
+
+  onEdit(event) {
+    if (this.state.formEdit === false) {
+      this.setState({ formEdit: true })
+    } else {
+      this.setState({ formEdit: false })
+    }
+  }
+
   onDelete(event) {
     let forceUpdate = () => {
       return this.props.removeReview();
@@ -46,6 +58,18 @@ class ReviewTile extends Component {
       reviewButtons = "reviewButtons hidden";
     }
 
+    let form;
+    if (this.state.formEdit) {
+      form = <ReviewEditForm
+        id={this.props.id}
+        memeId = {this.props.memeId}
+        rating={this.props.rating}
+        comment={this.props.comment}
+      />
+    } else {
+      form = ""
+    }
+
      return (
       <div className="review-tile">
         <dd className={"memeId" + this.props.memeId}>
@@ -55,7 +79,11 @@ class ReviewTile extends Component {
           <dl>Comment: {this.props.comment}</dl>
         </dd>
         <div className={reviewButtons}>
+          <input onClick={this.onEdit} type="submit" value="Edit" />
           <input onClick={this.onDelete} type="submit" value="Delete" />
+        </div>
+        <div>
+          {form}
         </div>
       </div>
     );

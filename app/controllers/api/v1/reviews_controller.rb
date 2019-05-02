@@ -31,6 +31,11 @@ class Api::V1::ReviewsController < ApplicationController
     end
   end
 
+  def edit
+    binding.pry
+
+  end
+
   private
 
   def review_params
