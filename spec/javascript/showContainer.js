@@ -52,12 +52,12 @@ describe("ShowContainer", () => {
     }, 0);
   });
 
-  // it("updates state to contain meme", done => {
-  //   setTimeout(() => {
-  //     expect(wrapper.state()).toEqual({ meme: meme, current_user: user, meme_is_current_user: true });
-  //     done();
-  //   }, 0);
-  // });
+  it("updates state to contain meme", done => {
+    setTimeout(() => {
+      expect(wrapper.state()).toEqual({ meme: meme, currentUser: user});
+      done();
+    }, 0);
+  });
 
   it("should render the following meme props", done => {
     setTimeout(() => {
