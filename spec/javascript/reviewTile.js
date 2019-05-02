@@ -2,9 +2,16 @@ import testHelper from "./testHelper";
 import ReviewTile from "../../app/javascript/react/components/ReviewTile";
 
 describe("ReviewTile", () => {
-  let id, meme_id, timestamp, username, rating, comment, wrapper;
+  let id, meme_id, timestamp, username, rating, comment, wrapper, user;
 
   beforeEach(() => {
+    user = {
+      id: 1,
+      email: "email1@test.com",
+      password: "password",
+      password_confirmation: "password",
+      role: "member"
+    };
     wrapper = mount(
       <ReviewTile
         id={1}
@@ -14,6 +21,7 @@ describe("ReviewTile", () => {
         username={"Doglover22"}
         rating={4}
         comment={"This is the first review comment"}
+        currentUser={user}
       />
     );
   });
@@ -30,7 +38,8 @@ describe("ReviewTile", () => {
       timestamp: "April 29, 2019, 5:55 pm",
       username: "Doglover22",
       rating: 4,
-      comment: "This is the first review comment"
+      comment: "This is the first review comment",
+      currentUser: user
     });
   });
 
