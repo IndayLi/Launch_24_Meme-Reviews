@@ -23,20 +23,20 @@ class ShowContainer extends Component {
         "Content-Type": "application/json"
       }
     })
-      .then(response => {
-        if (response.ok) {
-          return response;
-        } else {
-          let errorMessage = `${response.status} (${response.statusText})`,
-            error = new Error(errorMessage);
-          throw error;
-        }
-      })
-      .then(response => response.json())
-      .then(body => {
-        this.setState({ meme: body.meme, currentUser: body.current_user });
-      })
-      .catch(error => console.error(`Error in fetch: ${error.message}`));
+    .then(response => {
+      if (response.ok) {
+         return response;
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+          error = new Error(errorMessage);
+        throw error;
+      }
+    })
+    .then(response => response.json())
+    .then(body => {
+      this.setState({ meme: body.meme, currentUser: body.current_user });
+    })
+    .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
   deleteMeme() {
@@ -44,7 +44,7 @@ class ShowContainer extends Component {
     let memeToDelete = this.state.meme;
     let memeId = this.state.meme.id;
 
-    if (this.state.meme_is_current_user || this.state.current_user.role === "admin"){
+    if (this.state.currentUser.id === this.state.meme.user_id){
       fetch(`/api/v1/memes/${memeId}`, {
         credentials: "same-origin",
         method: "DELETE",
@@ -65,6 +65,7 @@ class ShowContainer extends Component {
       })
       .then(response => response.json())
       .then(body => {
+        return window.location.href = "/memes"
         this.setState({ meme: body.meme, currentUser: body.user_id });
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`));
@@ -78,16 +79,11 @@ class ShowContainer extends Component {
         <div id="show-image">
           <img src={this.state.meme.imageUrl} />
         </div>
-        <div>
-          <button type="button" onClick={this.deleteMeme}>
-            Delete
-          </button>
-        </div>
         <div id="show-text">
           <h2>
             {this.state.meme.title}
             <div className="memeButtons">
-              <div onClick={this.onEdit}>
+              <div>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="20"
@@ -97,7 +93,7 @@ class ShowContainer extends Component {
                   <path d="M0 0h24v24H0z" fill="none" />
                 </svg>
               </div>
-              <div onClick={this.onDelete}>
+              <div onClick={this.deleteMeme}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="20"
