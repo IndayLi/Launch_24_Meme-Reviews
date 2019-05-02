@@ -40,3 +40,5 @@ describe("ReviewTile", () => {
     expect(wrapper.find("dl").length).toEqual(4);
   });
 });
+
+export default reviewTile;

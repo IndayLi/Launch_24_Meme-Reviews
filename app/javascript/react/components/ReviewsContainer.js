@@ -9,10 +9,18 @@ class ReviewsContainer extends Component {
       reviews: []
     };
     this.addReview = this.addReview.bind(this);
+    this.removeReview = this.removeReview.bind(this);
   }
 
   addReview(review) {
     this.setState({ reviews: this.state.reviews.concat(review) });
+  }
+
+  removeReview(review) {
+    reviews = this.state.reviews.filter((item, index, arr) => {
+      return item.id != review.id;
+    });
+    this.setState({ reviews: reviews });
   }
 
   componentDidMount() {
@@ -40,11 +48,13 @@ class ReviewsContainer extends Component {
         <ReviewTile
           key={review.id}
           id={review.id}
+          userId={review.user_id}
           memeId={this.props.memeId}
           timestamp={review.timestamp}
           username={review.username}
           rating={review.rating}
           comment={review.comment}
+          removeReview={this.removeReview}
         />
       );
     });
@@ -55,9 +65,7 @@ class ReviewsContainer extends Component {
           memeId={this.props.memeId}
           addReview={this.addReview}
         />
-        <div className="reviews-container">
-          <p>{reviewArray}</p>
-        </div>
+        <div className="reviews-container">{reviewArray}</div>
       </div>
     );
   }
