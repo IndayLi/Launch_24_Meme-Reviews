@@ -8,5 +8,4 @@ class ReviewSerializer < ActiveModel::Serializer
   def timestamp
     object.created_at.strftime("%B %e, %Y, %l:%M %P")
   end
-
 end
