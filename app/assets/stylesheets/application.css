@@ -24,6 +24,8 @@
 
  body {
    background-color: #F0F2EF;
+   background-image: url("https://images2.imgbox.com/f3/3f/3PZbsiJm_o.png");
+   background-attachment: fixed;
    font-family: 'Open Sans', sans-serif;
  }
 
@@ -106,12 +108,14 @@ h2 {
    border: 3px solid #63444a;
    border-radius: 10px;
    box-shadow: 4px 4px 6px;
+   filter: grayscale(70%);
    object-fit: cover;
    opacity: 0.6;
    transition: 0.75s;
  }
 
  #gallery img:hover {
+   filter: grayscale(0%);
    opacity: 1;
  }
 
