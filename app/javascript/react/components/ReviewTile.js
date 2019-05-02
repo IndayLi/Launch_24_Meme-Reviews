@@ -39,7 +39,14 @@ class ReviewTile extends Component {
       .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
   render() {
-    return (
+    let reviewButtons;
+    if (this.props.userId === this.props.currentUser) {
+      reviewButtons = "reviewButtons";
+    } else {
+      reviewButtons = "reviewButtons hidden";
+    }
+
+     return (
       <div className="review-tile">
         <dd className={"memeId" + this.props.memeId}>
           <dl>{this.props.timestamp}</dl>
@@ -47,7 +54,7 @@ class ReviewTile extends Component {
           <dl>Rating: {this.props.rating}</dl>
           <dl>Comment: {this.props.comment}</dl>
         </dd>
-        <div>
+        <div className={reviewButtons}>
           <input onClick={this.onDelete} type="submit" value="Delete" />
         </div>
       </div>

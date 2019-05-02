@@ -4,7 +4,8 @@ class Api::V1::ReviewsController < ApplicationController
   def index
     @meme = Meme.find(params[:meme_id])
     @reviews = @meme.reviews
-    render json: @reviews
+    @current_user = current_user.id
+    render json: {reviews: @reviews, current_user: @current_user }
   end
 
   def create
