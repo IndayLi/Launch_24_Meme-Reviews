@@ -9,6 +9,7 @@ describe("ReviewTile", () => {
       <ReviewTile
         id={1}
         meme_id={3}
+        user_id={3}
         timestamp={"April 29, 2019, 5:55 pm"}
         username={"Doglover22"}
         rating={4}
@@ -25,6 +26,7 @@ describe("ReviewTile", () => {
     expect(wrapper.find(ReviewTile).props()).toEqual({
       id: 1,
       meme_id: 3,
+      user_id: 3,
       timestamp: "April 29, 2019, 5:55 pm",
       username: "Doglover22",
       rating: 4,
@@ -40,5 +42,3 @@ describe("ReviewTile", () => {
     expect(wrapper.find("dl").length).toEqual(4);
   });
 });
-
-export default reviewTile;

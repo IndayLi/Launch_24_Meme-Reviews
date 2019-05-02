@@ -21,7 +21,7 @@ class Api::V1::ReviewsController < ApplicationController
 
   def destroy
     review = Review.find(params[:id])
-    if params[:review][:id] === current_user.id
+    if params[:review][:id].to_i == current_user.id
       Review.find(params[:id]).delete
       render json: {deletedReview: review}
     else
