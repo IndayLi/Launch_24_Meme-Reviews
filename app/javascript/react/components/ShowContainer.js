@@ -35,11 +35,11 @@ class ShowContainer extends Component {
     })
     .then(response => response.json())
     .then(body => {
-      let match
-      if (body.meme.user_id === body.current_user.id){
+      let match = false
+      if (body.meme.user === body.current_user){
         match = true
       };
-      this.setState({ meme: body.meme, current_user: body.current_user.id, meme_is_current_user: match })
+      this.setState({ meme: body.meme, current_user: body.current_user, meme_is_current_user: match })
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
   };
@@ -49,7 +49,8 @@ class ShowContainer extends Component {
     let memeToDelete = this.state.meme;
     let memeId = this.state.meme.id;
 
-    if (this.state.meme_is_current_user){
+debugger
+    if (this.state.meme_is_current_user || this.state.current_user.role === "admin"){
       fetch(`/api/v1/memes/${memeId}`, {
         credentials: 'same-origin',
         method: 'DELETE',

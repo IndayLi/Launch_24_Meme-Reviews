@@ -35,7 +35,6 @@ describe("ShowContainer", () => {
     wrapper = mount(<ShowContainer params={{id: user.id}} />);
   });
 
-debugger
   afterEach(fetchMock.restore);
 
   it("renders the show container on the page", done => {
@@ -55,7 +54,7 @@ debugger
 
   it("updates state to contain meme", done => {
     setTimeout(() => {
-      expect(wrapper.state()).toEqual({ meme: meme, current_user: user.id, meme_is_current_user: true });
+      expect(wrapper.state()).toEqual({ meme: meme, current_user: user, meme_is_current_user: true });
       done();
     }, 0);
   });
