@@ -55,7 +55,7 @@ class ReviewsContainer extends Component {
           rating={review.rating}
           comment={review.comment}
           removeReview={this.removeReview}
-          currentUser={this.state.currentUser}
+          currentUser={this.props.currentUser}
         />
       );
     });

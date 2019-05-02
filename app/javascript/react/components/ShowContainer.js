@@ -24,14 +24,13 @@ class ShowContainer extends Component {
       })
       .then(response => response.json())
       .then(body => {
-        this.setState({ meme: body.meme, currentUser: body.current_user });
+        this.setState({ meme: body.meme, currentUser: body.user_id });
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
   render() {
     let memeId = this.props.params.id;
-
     return (
       <div id="show-page">
         <div id="show-image">
