@@ -62,7 +62,9 @@ class ReviewsFormContainer extends Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.handleOnSubmit}>
+        <form
+          onSubmit={this.handleOnSubmit}
+          className="review-form-render">
           <TextField
             type="number"
             labelName="rating"
