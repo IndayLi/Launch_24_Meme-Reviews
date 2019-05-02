@@ -6,7 +6,8 @@ class ReviewsContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      reviews: []
+      reviews: [],
+      currentUser: this.props.currentUser
     };
     this.addReview = this.addReview.bind(this);
     this.removeReview = this.removeReview.bind(this);
@@ -34,7 +35,9 @@ class ReviewsContainer extends Component {
       })
       .then(response => response.json())
       .then(body => {
-        this.setState({ reviews: body });
+        this.setState({
+          reviews: body
+        });
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
@@ -52,6 +55,7 @@ class ReviewsContainer extends Component {
           rating={review.rating}
           comment={review.comment}
           removeReview={this.removeReview}
+          currentUser={this.props.currentUser.id}
         />
       );
     });

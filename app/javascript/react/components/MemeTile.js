@@ -1,16 +1,18 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router'
+import React, { Component } from "react";
+import { Link } from "react-router";
 
 const MemeTile = props => {
-  return(
+  return (
     <div className="tile">
       <dd>
-      <Link to={`/memes/${props.id}`}>
-        <dl><img src={props.imageUrl}/></dl>
-      </Link>
+        <Link to={`/memes/${props.id}`}>
+          <dl>
+            <img src={props.imageUrl} />
+          </dl>
+        </Link>
       </dd>
     </div>
-  )
-}
+  );
+};
 
 export default MemeTile;
