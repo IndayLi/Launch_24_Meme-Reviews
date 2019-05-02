@@ -116,32 +116,44 @@
 }
 
 #show-page #show-image {
+   position: relative;
    text-align: center;
 }
 
 #show-page img {
-   border: 3px solid #63444a;
-   border-radius: 10px;
-   box-shadow: 4px 4px 6px;
-   grid-area: meme-image;
-   max-width: 100%;
+  border: 3px solid #63444a;
+  border-radius: 10px;
+  box-shadow: 4px 4px 6px;
+  grid-area: meme-image;
+  max-width: 100%;
 }
 
 #show-text {
-   grid-area: meme-info;
-   height: 200px;
+  grid-area: meme-info;
+  height: 200px;
 }
 
 #show-page h2 {
-   background-color: rgba(103,66,88,0.9);
-   color: #8BBFBB;
-   font-family: 'Fjalla One', sans-serif;
-   font-size: 40px;
-   letter-spacing: 1px;
-   margin: 0;
-   padding: 0px 15px;
-   text-transform: uppercase;
-   text-shadow: 1px 1px 2px #111;
+  background-color: rgba(103,66,88,0.9);
+  color: #8BBFBB;
+  font-family: 'Fjalla One', sans-serif;
+  font-size: 40px;
+  letter-spacing: 1px;
+  margin: 0;
+  padding: 0px 15px;
+  position: relative;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 2px #111;
+}
+
+#show-page h2 .memeButtons {
+  bottom: -45px;
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  right: 20px;
+  width: 55px;
+  z-index: 100;
 }
 
 @media (max-width: 800px) {
@@ -157,64 +169,74 @@
 }
 
 #show-text p {
-   background-color: #CBCBCB;
-   border: 15px solid rgba(139,191,187, 0.75);
-   color: #111;
-   font-size: 1.25em;
-   letter-spacing: 1px;
-   min-height: 150px;
-   padding: 15px;
+  background-color: #CBCBCB;
+  border: 15px solid rgba(139,191,187, 0.75);
+  color: #111;
+  font-size: 1.25em;
+  letter-spacing: 1px;
+  min-height: 150px;
+  padding: 15px;
+  position: relative;
 }
 
 
 /* REVIEWS ON THE SHOW PAGE BELOW */
 
 #meme-reviews {
-   grid-area: meme-reviews;
-   width: 100%;
+  grid-area: meme-reviews;
+  width: 100%;
 }
 
 #meme-reviews .meme-review-array-container {
-   display: flex;
-   flex-flow: row wrap;
-   justify-content: space-around;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
 }
 
 .review-tile {
-   background-color: #CBCBCB;
-   flex-direction: row;
-   margin: 0 0 20px 0;
-   padding: 15px;
-   position: relative;
-   width: 45%;
+  background-color: #CBCBCB;
+  flex-direction: row;
+  margin: 0 0 20px 0;
+  padding: 15px;
+  position: relative;
+  width: 45%;
 }
 
 .review-tile .review-date {
-   font-size: 11px;
-   font-style: italic;
-   position: absolute;
-   right: 10px;
-   top: 10px;
+  font-size: 11px;
+  font-style: italic;
+  position: absolute;
+  right: 10px;
+  top: 10px;
 }
 
 .review-tile .review-username {
-   font-size: 12px;
-   font-style: italic;
-   position: absolute;
-   right: 10px;
-   bottom: -15px;
+  font-size: 12px;
+  font-style: italic;
+  position: absolute;
+  left: 10px;
+  bottom: -15px;
 }
 
 .review-tile .review-rating {
-   font-size: 13px;
-   font-weight: bold;
-   line-height: 5px;
-   position: relative;
-   top: 5px;
+  font-size: 13px;
+  font-weight: bold;
+  line-height: 5px;
+  position: relative;
+  top: 5px;
 }
 
 .review-tile .review-comment {
-   font-size: 13px;
+  font-size: 13px;
+}
+
+.review-tile .reviewButtons {
+   bottom: 5px;
+   display: flex;
+   justify-content: space-between;
+   right: 5px;
+   position: absolute;
+   width: 45px;
 }
 
 
@@ -242,4 +264,11 @@
 #review-form .button {
    background-color: rgba(103,66,88,0.9);
    width: 100%;
+}
+
+
+/* HIDDEN CLASS */
+
+.hidden {
+   display: none;
 }
