@@ -32,11 +32,11 @@ class Api::V1::MemesController < ApplicationController
     meme = Meme.find(params[:id])
     user = user_signed_in
 
-    if user.id != meme.user.id
-      flash.now[:errors] = "You must be the creator of this meme to delete!"
+    if user.id == meme.user.id || user.role == "admin"
+      meme.delete
       render json: {id: params[:id]}
     else
-      meme.delete
+      flash.now[:errors] = "You must be the creator of this meme to delete!"
       render json: {id: params[:id]}
     end
   end
