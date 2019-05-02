@@ -3,11 +3,15 @@ class MemesController < ApplicationController
 
   def index
     @memes = Meme.all
+    @user = current_user
+  end
+
+  def show
+    @current_user = current_user
   end
 
   def new
     @meme = Meme.new
-    @user = current_user
   end
 
   protected

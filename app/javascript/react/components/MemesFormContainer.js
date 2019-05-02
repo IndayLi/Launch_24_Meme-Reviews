@@ -46,6 +46,7 @@ class MemesFormContainer extends Component {
     })
     .then(response => response.json())
     .then(body => {
+      return window.location.href = `/memes/${body.meme.id}`
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
 
