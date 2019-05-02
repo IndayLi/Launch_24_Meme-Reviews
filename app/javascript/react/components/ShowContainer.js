@@ -45,7 +45,6 @@ class ShowContainer extends Component {
     let memeToDelete = this.state.meme;
     let memeId = this.state.meme.id;
 
-
     if (this.state.meme_is_current_user || this.state.current_user.role === "admin"){
       fetch(`/api/v1/memes/${memeId}`, {
         credentials: 'same-origin',
@@ -79,9 +78,6 @@ class ShowContainer extends Component {
       <div id="show-page">
         <div id="show-image">
           <img src={this.state.meme.imageUrl} />
-        </div>
-        <div>
-          <button type="button" onClick={this.deleteMeme}>Delete</button>
         </div>
         <div id="show-text">
           <h2>{this.state.meme.title}
