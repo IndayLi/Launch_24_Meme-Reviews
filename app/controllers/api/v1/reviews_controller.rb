@@ -30,8 +30,12 @@ class Api::V1::ReviewsController < ApplicationController
     end
   end
 
-  def edit
-    binding.pry
+  def update
+    review = Review.find(params[:id])
+    review.rating = params[:rating]
+    review.comment = params[:comment]
+    review.save
+    render json: {review: review}
   end
 
   private

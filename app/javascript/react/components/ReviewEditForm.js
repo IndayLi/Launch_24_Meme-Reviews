@@ -28,7 +28,15 @@ class ReviewEditForm extends Component {
       id: this.props.id
     };
 
-    fetch(`/api/v1/memes/${this.props.memeId}/reviews/${this.props.id}/edit`)
+    fetch(`/api/v1/memes/${this.props.memeId}/reviews/${this.props.id}`, {
+      credentials: "same-origin",
+      method: "PATCH",
+      body: JSON.stringify(reviewPayload),
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      }
+    })
       .then(response => {
         if (response.ok) {
           return response;
@@ -40,14 +48,13 @@ class ReviewEditForm extends Component {
       })
       .then(response => response.json())
       .then(body => {
-        debugger
+        this.props.changeSubmitted();
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`));
 
   }
 
   render() {
-
     return(
       <div>
         <form onSubmit={this.handleOnSubmit}>

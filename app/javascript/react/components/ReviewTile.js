@@ -11,6 +11,7 @@ class ReviewTile extends Component {
     };
     this.onDelete = this.onDelete.bind(this);
     this.onEdit = this.onEdit.bind(this);
+    this.changeSubmitted = this.changeSubmitted.bind(this);
   }
 
   onEdit(event) {
@@ -91,6 +92,7 @@ class ReviewTile extends Component {
           memeId={this.props.memeId}
           rating={this.props.rating}
           comment={this.props.comment}
+          changeSubmitted={this.props.changeSubmitted}
         />
       );
     } else {

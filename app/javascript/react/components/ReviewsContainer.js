@@ -11,6 +11,11 @@ class ReviewsContainer extends Component {
     };
     this.addReview = this.addReview.bind(this);
     this.removeReview = this.removeReview.bind(this);
+    this.changeSubmitted = this.changeSubmitted.bind(this);
+  }
+
+  changeSubmitted(event) {
+    debugger
   }
 
   addReview(review) {
@@ -56,6 +61,7 @@ class ReviewsContainer extends Component {
           comment={review.comment}
           removeReview={this.removeReview}
           currentUser={this.props.currentUser.id}
+          changeSubmitted={this.changeSubmitted}
         />
       );
     });
