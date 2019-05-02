@@ -7,7 +7,7 @@ class ShowContainer extends Component {
     super(props);
     this.state = {
       meme: {},
-      current_user: "",
+      current_user: {},
       meme_is_current_user: false
     };
     this.deleteMeme = this.deleteMeme.bind(this)
@@ -35,10 +35,13 @@ class ShowContainer extends Component {
     })
     .then(response => response.json())
     .then(body => {
-      let match = false
-      if (body.meme.user === body.current_user){
+      debugger
+      let match
+      if (body.meme.user.id === body.current_user.id){
         match = true
-      };
+      } else {
+        match = false
+      }
       this.setState({ meme: body.meme, current_user: body.current_user, meme_is_current_user: match })
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
