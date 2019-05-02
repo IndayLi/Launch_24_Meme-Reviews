@@ -7,8 +7,7 @@ class ShowContainer extends Component {
     super(props);
     this.state = {
       meme: {},
-      current_user: {},
-      meme_is_current_user: false
+      current_user: {}
     };
     this.deleteMeme = this.deleteMeme.bind(this)
   };
@@ -35,14 +34,8 @@ class ShowContainer extends Component {
     })
     .then(response => response.json())
     .then(body => {
-      debugger
-      let match
-      if (body.meme.user.id === body.current_user.id){
-        match = true
-      } else {
-        match = false
-      }
-      this.setState({ meme: body.meme, current_user: body.current_user, meme_is_current_user: match })
+
+      this.setState({ meme: body.meme, current_user: body.current_user})
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
   };
@@ -52,7 +45,7 @@ class ShowContainer extends Component {
     let memeToDelete = this.state.meme;
     let memeId = this.state.meme.id;
 
-debugger
+
     if (this.state.meme_is_current_user || this.state.current_user.role === "admin"){
       fetch(`/api/v1/memes/${memeId}`, {
         credentials: 'same-origin',
@@ -74,6 +67,7 @@ debugger
       })
       .then(response => response.json())
       .then(body => {
+          this.setState
           return window.location.href = "/memes"
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`))
