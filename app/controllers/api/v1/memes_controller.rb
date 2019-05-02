@@ -23,7 +23,7 @@ class Api::V1::MemesController < ApplicationController
 
   def show
     meme = Meme.find(params[:id])
-    render json: meme
+    render json: {meme: meme, user_id: current_user.id}
   end
 
   private

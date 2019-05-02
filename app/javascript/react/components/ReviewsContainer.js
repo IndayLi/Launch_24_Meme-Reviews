@@ -6,13 +6,19 @@ class ReviewsContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      reviews: []
+      reviews: [],
+      currentUser: this.props.currentUser
     };
     this.addReview = this.addReview.bind(this);
+    this.removeReview = this.removeReview.bind(this);
   }
 
   addReview(review) {
     this.setState({ reviews: this.state.reviews.concat(review) });
+  }
+
+  removeReview(review) {
+    this.componentDidMount();
   }
 
   componentDidMount() {
@@ -29,7 +35,9 @@ class ReviewsContainer extends Component {
       })
       .then(response => response.json())
       .then(body => {
-        this.setState({ reviews: body });
+        this.setState({
+          reviews: body
+        });
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
@@ -40,23 +48,25 @@ class ReviewsContainer extends Component {
         <ReviewTile
           key={review.id}
           id={review.id}
+          userId={review.user_id}
           memeId={this.props.memeId}
           timestamp={review.timestamp}
           username={review.username}
           rating={review.rating}
           comment={review.comment}
+          removeReview={this.removeReview}
+          currentUser={this.state.currentUser}
         />
       );
     });
     return (
-      <div id="meme-reviews">
-        <div className="meme-review-array-container">{reviewArray}</div>
-        <div id="review-form">
-          <ReviewsFormContainer
-            memeId={this.props.memeId}
-            addReview={this.addReview}
-          />
-        </div>
+      <div>
+        <h3>Reviews</h3>
+        <ReviewsFormContainer
+          memeId={this.props.memeId}
+          addReview={this.addReview}
+        />
+        <div className="reviews-container">{reviewArray}</div>
       </div>
     );
   }

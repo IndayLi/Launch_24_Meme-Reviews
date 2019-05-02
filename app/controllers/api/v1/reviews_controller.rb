@@ -4,6 +4,7 @@ class Api::V1::ReviewsController < ApplicationController
   def index
     @meme = Meme.find(params[:meme_id])
     @reviews = @meme.reviews
+    @current_user = current_user.id
     render json: @reviews
   end
 
@@ -11,13 +12,27 @@ class Api::V1::ReviewsController < ApplicationController
     input_data = review_params
     input_data['user'] = current_user
     review = Review.new(input_data)
-
     if review.save
       render json: { review: review }
     else
       render json: { error: review.errors.full_messages },
         status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    review = Review.find(params[:id])
+    if params[:review][:id].to_i == current_user.id
+      Review.find(params[:id]).delete
+      render json: {deletedReview: review}
+    else
+      flash.now["You are not the owner of this review."]
+      render json: {id: params[:id]}
+    end
+  end
+
+  def edit
+    binding.pry
   end
 
   private
