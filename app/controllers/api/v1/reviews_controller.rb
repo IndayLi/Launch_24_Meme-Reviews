@@ -31,7 +31,7 @@ class Api::V1::ReviewsController < ApplicationController
   end
 
   def edit
-    binding.pry
+
   end
 
   private
