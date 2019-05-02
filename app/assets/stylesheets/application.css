@@ -147,12 +147,12 @@
 }
 
 #show-page h2 .memeButtons {
-  bottom: -45px;
+  bottom: -40px;
   display: flex;
   justify-content: space-between;
   position: absolute;
   right: 20px;
-  width: 55px;
+  width: 45px;
   z-index: 100;
 }
 
