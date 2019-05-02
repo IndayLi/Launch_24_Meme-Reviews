@@ -22,9 +22,6 @@ class ReviewTile extends Component {
   }
 
   onDelete(event) {
-    let forceUpdate = () => {
-      return this.props.removeReview();
-    };
     event.preventDefault();
     fetch(`/api/v1/memes/${this.props.memeId}/reviews/${this.props.id}`, {
       credentials: "same-origin",
@@ -46,7 +43,7 @@ class ReviewTile extends Component {
       })
       .then(response => response.json())
       .then(body => {
-        forceUpdate();
+        this.props.forceRender();
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
@@ -91,7 +88,8 @@ class ReviewTile extends Component {
           memeId={this.props.memeId}
           rating={this.props.rating}
           comment={this.props.comment}
-          changeSubmitted={this.props.changeSubmitted}
+          forceRender={this.props.forceRender}
+          onEdit={this.onEdit}
         />
       );
     } else {

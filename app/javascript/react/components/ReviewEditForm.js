@@ -6,8 +6,9 @@ class ReviewEditForm extends Component {
     super(props);
     this.state = {
       rating: this.props.rating,
-      comment: this.props.comment
-    }
+      comment: this.props.comment,
+      errors: ""
+    };
     this.handleOnChange = this.handleOnChange.bind(this);
     this.handleOnSubmit = this.handleOnSubmit.bind(this);
   }
@@ -16,7 +17,6 @@ class ReviewEditForm extends Component {
     let newEdit = event.target.value;
     this.setState({ [event.target.name]: newEdit });
   }
-
 
   handleOnSubmit(event) {
     event.preventDefault();
@@ -47,15 +47,20 @@ class ReviewEditForm extends Component {
       })
       .then(response => response.json())
       .then(body => {
-        this.props.changeSubmitted();
+        if (this.state.error === "") {
+          this.props.onEdit();
+          this.props.forceRender();
+        } else {
+          this.setState({ error: body.error });
+        }
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`));
-
   }
 
   render() {
-    return(
+    return (
       <div>
+        <h4>{this.state.error}</h4>
         <form onSubmit={this.handleOnSubmit}>
           <TextField
             type="number"

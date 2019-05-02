@@ -34,8 +34,11 @@ class Api::V1::ReviewsController < ApplicationController
     review = Review.find(params[:id])
     review.rating = params[:rating]
     review.comment = params[:comment]
-    review.save
-    render json: {review: review}
+    if review.save
+      render json: {error: ""}
+    else
+      render json: {error: "That is not a valid rating."}
+    end
   end
 
   private
