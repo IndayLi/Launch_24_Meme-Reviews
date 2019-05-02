@@ -44,7 +44,7 @@ class ShowContainer extends Component {
     let memeToDelete = this.state.meme;
     let memeId = this.state.meme.id;
 
-    if (this.state.currentUser.id === this.state.meme.user_id){
+    if (this.state.currentUser.id === this.state.meme.user_id || this.state.currentUser.role === "admin"){
       fetch(`/api/v1/memes/${memeId}`, {
         credentials: "same-origin",
         method: "DELETE",
