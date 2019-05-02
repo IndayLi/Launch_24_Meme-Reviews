@@ -28,6 +28,21 @@
  }
 
 
+
+h2 {
+   background-color: rgba(103,66,88,0.9);
+   color: #8BBFBB;
+   font-family: 'Fjalla One', sans-serif;
+   font-size: 40px;
+   letter-spacing: 1px;
+   margin: 0;
+   padding: 0px 15px;
+   position: relative;
+   text-transform: uppercase;
+   text-shadow: 1px 1px 2px #111;
+}
+
+
  /* HEADER CSS BELOW */
 
  #header {
@@ -263,6 +278,33 @@
 
 #review-form .button {
    background-color: rgba(103,66,88,0.9);
+   width: 100%;
+}
+
+
+/* SIGN UP FORM */
+
+.sign-up {
+   margin: 0 auto;
+   position: relative;
+   top: 50px;
+   width: 33%;
+}
+
+.sign-up label {
+   position: relative;
+   top: 25px;
+}
+
+.sign-up em {
+   font-size: 12px;
+   position: absolute;
+   right: 0px;
+   top: 180px;
+}
+
+.sign-up .actions input {
+   margin: 20px 0;
    width: 100%;
 }
 
