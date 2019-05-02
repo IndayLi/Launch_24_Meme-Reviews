@@ -60,8 +60,7 @@ class ReviewEditForm extends Component {
   render() {
     return (
       <div>
-        <h4>{this.state.error}</h4>
-        <form onSubmit={this.handleOnSubmit}>
+        <form onSubmit={this.handleOnSubmit} className="review-form-edit">
           <TextField
             type="number"
             labelName="rating"
