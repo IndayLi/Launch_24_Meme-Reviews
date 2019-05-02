@@ -9,7 +9,7 @@ class Api::V1::MemesController < ApplicationController
   def create
     user_input = JSON.parse(request.body.read)
     meme = Meme.new(
-      user_id: user_signed_in,
+      user: user_signed_in,
       title: user_input["title"],
       imageUrl: user_input["imageUrl"],
       description: user_input["description"]
@@ -30,8 +30,15 @@ class Api::V1::MemesController < ApplicationController
 
   def destroy
     meme = Meme.find(params[:id])
-    meme.delete
-    render json: {id: params[:id]}
+    user = user_signed_in
+
+    if user.id != meme.user.id
+      flash.now[:errors] = "You must be the creator of this meme to delete!"
+      render json: {id: params[:id]}
+    else
+      meme.delete
+      render json: {id: params[:id]}
+    end
   end
 
   private

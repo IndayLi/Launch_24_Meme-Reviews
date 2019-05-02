@@ -98,4 +98,22 @@ RSpec.describe Api::V1::MemesController, type: :controller do
       expect(returned_json["meme"]["user_id"]).to eq user.id
     end
   end
+
+  describe "DELETE#destroy" do
+    let!(:user) { FactoryBot.create(:user, role: "member") };
+    let!(:user2) { FactoryBot.create(:user, role: "member") };
+    let!(:meme) { FactoryBot.create(:meme, user: user) };
+    it "deletes a meme" do
+      sign_in user
+
+      expect { delete :destroy, params: { id: meme.id } }.to change(Meme, :count).by(-1)
+      expect(Meme.exists?(meme.id)).to eq(false)
+    end
+
+    it "can't be deleted by user who didn't create meme" do
+      sign_in user2
+
+      expect { delete :destroy, params: { id: meme.id } }.to change(Meme, :count).by(0)
+    end
+  end
 end
