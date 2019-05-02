@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import ReviewsContainer from "./ReviewsContainer";
-import ReviewsFormContainer from "./ReviewsFormContainer"
+import ReviewsFormContainer from "./ReviewsFormContainer";
 
 class ShowContainer extends Component {
   constructor(props) {
@@ -11,7 +11,7 @@ class ShowContainer extends Component {
       meme_is_current_user: false
     };
     this.deleteMeme = this.deleteMeme.bind(this)
-  }
+  };
 
   componentDidMount() {
     let memeId = this.props.params.id;
@@ -24,29 +24,29 @@ class ShowContainer extends Component {
         'Content-Type': 'application/json'
       }
     })
-      .then(response => {
-        if (response.ok) {
-          return response;
-        } else {
-          let errorMessage = `${response.status} (${response.statusText})`,
-            error = new Error(errorMessage);
-          throw error;
-        }
-      })
-      .then(response => response.json())
-      .then(body => {
-        let match
-        if (body.meme.user_id === body.current_user.id){
-          match = true
-        }
-        this.setState({ meme: body.meme, current_user: body.current_user.id, meme_is_current_user: match })
-      })
-      .catch(error => console.error(`Error in fetch: ${error.message}`));
-  }
+    .then(response => {
+      if (response.ok) {
+        return response;
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+          error = new Error(errorMessage);
+        throw error;
+      };
+    })
+    .then(response => response.json())
+    .then(body => {
+      let match
+      if (body.meme.user_id === body.current_user.id){
+        match = true
+      };
+      this.setState({ meme: body.meme, current_user: body.current_user.id, meme_is_current_user: match })
+    })
+    .catch(error => console.error(`Error in fetch: ${error.message}`));
+  };
 
   deleteMeme(){
-    event.preventDefault()
-    let memeToDelete = this.state.meme
+    event.preventDefault();
+    let memeToDelete = this.state.meme;
     let memeId = this.state.meme.id;
 
     if (this.state.meme_is_current_user){
@@ -59,22 +59,22 @@ class ShowContainer extends Component {
         },
         body: JSON.stringify(memeToDelete)
       })
-        .then(response => {
-          if (response.ok) {
-            return response;
-          } else {
-            let errorMessage = `${response.status}(${response.statusText})` ,
-            error = new Error(errorMessage);
-            throw(error);
-          }
-        })
-        .then(response => response.json())
-        .then(body => {
-            return window.location.href = "/memes"
-        })
-        .catch(error => console.error(`Error in fetch: ${error.message}`))
-    }
-  }
+      .then(response => {
+        if (response.ok) {
+          return response;
+        } else {
+          let errorMessage = `${response.status}(${response.statusText})` ,
+          error = new Error(errorMessage);
+          throw(error);
+        };
+      })
+      .then(response => response.json())
+      .then(body => {
+          return window.location.href = "/memes"
+      })
+      .catch(error => console.error(`Error in fetch: ${error.message}`))
+    };
+  };
 
   render() {
     return (
@@ -99,7 +99,7 @@ class ShowContainer extends Component {
         </div>
       </div>
     );
-  }
-}
+  };
+};
 
 export default ShowContainer;
