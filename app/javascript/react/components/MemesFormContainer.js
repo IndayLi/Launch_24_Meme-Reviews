@@ -46,6 +46,7 @@ class MemesFormContainer extends Component {
     })
     .then(response => response.json())
     .then(body => {
+      return window.location.href = `/memes/${body.meme.id}`
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
 
@@ -58,7 +59,9 @@ class MemesFormContainer extends Component {
 
   render() {
     return(
-      <div>
+      <div id="new-meme-form">
+        <h2>Submit A New Meme</h2>
+        <br />
         <form onSubmit={this.handleOnSubmit}>
           <TextField
             labelName='Title'
@@ -78,6 +81,7 @@ class MemesFormContainer extends Component {
             value={this.state.description}
             handleOnChange={this.handleOnChange}
           />
+          <br />
           <input type ="submit" className="button" value="Submit"/>
         </form>
       </div>

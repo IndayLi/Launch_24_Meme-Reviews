@@ -56,13 +56,14 @@ class ReviewsContainer extends Component {
       );
     });
     return (
-      <div>
-        <h3>Reviews</h3>
-        <ReviewsFormContainer
-          memeId={this.props.memeId}
-          addReview={this.addReview}
-        />
-        <div className="reviews-container">{reviewArray}</div>
+      <div id="meme-reviews">
+        <div className="meme-review-array-container">{reviewArray}</div>
+        <div id="review-form">
+          <ReviewsFormContainer
+            memeId={this.props.memeId}
+            addReview={this.addReview}
+          />
+        </div>
       </div>
     );
   }

@@ -36,7 +36,9 @@ RSpec.describe Api::V1::MemesController, type: :controller do
   end
 
   describe "GET#show" do
+    let!(:user) { FactoryBot.create(:user, role: "member") };
     it "returns successful response with json-formatted data" do
+      sign_in user
       get :show, params: {id: meme_1.id}
 
       expect(response.status).to eq 200
@@ -44,8 +46,10 @@ RSpec.describe Api::V1::MemesController, type: :controller do
     end
 
     it "returns the correct meme data in a usable format" do
+      sign_in user
       get :show, params: {id: meme_1.id}
       response_json = JSON.parse(response.body)
+      response_json = response_json["meme"]
 
       expect(response_json["title"]).to eq meme_1.title
       expect(response_json["imageUrl"]).to eq meme_1.imageUrl
@@ -92,6 +96,24 @@ RSpec.describe Api::V1::MemesController, type: :controller do
       expect(returned_json["meme"]["title"]).to eq "Meme Title Woohoo"
       expect(returned_json["meme"]["imageUrl"]).to eq "www.meme.com"
       expect(returned_json["meme"]["user_id"]).to eq user.id
+    end
+  end
+
+  describe "DELETE#destroy" do
+    let!(:user) { FactoryBot.create(:user, role: "member") };
+    let!(:user2) { FactoryBot.create(:user, role: "member") };
+    let!(:meme) { FactoryBot.create(:meme, user: user) };
+    it "deletes a meme" do
+      sign_in user
+
+      expect{ delete :destroy, params: { id: meme.id } }.to change(Meme, :count).by(-1)
+      expect(Meme.exists?(meme.id)).to eq(false)
+    end
+
+    it "can't be deleted by user who didn't create meme" do
+      sign_in user2
+
+      expect{ delete :destroy, params: { id: meme.id } }.to change(Meme, :count).by(0)
     end
   end
 end
