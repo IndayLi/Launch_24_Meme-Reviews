@@ -35,7 +35,6 @@ describe("ShowContainer", () => {
     wrapper = mount(<ShowContainer params={{id: user.id}} />);
   });
 
-debugger
   afterEach(fetchMock.restore);
 
   it("renders the show container on the page", done => {
