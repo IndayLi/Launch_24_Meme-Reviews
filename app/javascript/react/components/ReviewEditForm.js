@@ -10,7 +10,6 @@ class ReviewEditForm extends Component {
     }
     this.handleOnChange = this.handleOnChange.bind(this);
     this.handleOnSubmit = this.handleOnSubmit.bind(this);
-
   }
 
   handleOnChange(event) {
