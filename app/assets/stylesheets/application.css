@@ -284,26 +284,29 @@ h2 {
 
 /* SIGN UP FORM */
 
-.sign-up {
+.sign-up, .log-in {
    margin: 0 auto;
    position: relative;
    top: 50px;
    width: 33%;
 }
 
-.sign-up label {
+.sign-up label,
+.log-in label:first-child{
    position: relative;
    top: 25px;
 }
 
-.sign-up em {
+.sign-up em,
+.log-in em {
    font-size: 12px;
    position: absolute;
    right: 0px;
    top: 180px;
 }
 
-.sign-up .actions input {
+.sign-up .actions input,
+.log-in .actions input {
    margin: 20px 0;
    width: 100%;
 }
