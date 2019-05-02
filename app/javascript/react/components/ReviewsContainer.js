@@ -50,7 +50,6 @@ class ReviewsContainer extends Component {
     });
     return (
       <div id="meme-reviews">
-        <h3>Reviews</h3>
         <div className="meme-review-array-container">{reviewArray}</div>
         <div id="review-form">
           <ReviewsFormContainer
