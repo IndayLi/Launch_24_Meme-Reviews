@@ -11,24 +11,23 @@
 </head>
 <body>
 
-  <nav class="top-bar">
-    <ul class="title-area">
-      <li class="name">
-        <h1><a href="/">Meme Reviews</a></h1>
-      </li>
-    </ul>
+  <link href="https://fonts.googleapis.com/css?family=Fjalla+One|Open+Sans" rel="stylesheet">
 
-    <section class="top-bar-section">
-      <ul class="right">
-        <%- if current_user -%>
-          <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
-        <%- else -%>
-          <li><%= link_to 'Sign Up', new_user_registration_path %></li>
-          <li><%= link_to 'Sign In', new_user_session_path %></li>
-        <%- end -%>
-      </ul>
-    </section>
-  </nav>
+  <div id="header">
+    <h1>meme reviews</h1>
+  </div>
+
+  <div id="nav">
+    <%- if current_user -%>
+      <%= link_to 'Add A Meme', new_meme_path %>
+      <span>
+        <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
+      </span>
+    <%- else -%>
+      <%= link_to 'Sign Up', new_user_registration_path %>
+      <%= link_to 'Sign In', new_user_session_path %>
+    <%- end -%>
+  </div>
 
   <%- flash.each do |key, value| -%>
     <div class="flash flash-<%= key %>">

@@ -37,18 +37,15 @@ class MemesContainer extends Component {
           id={meme.id}
           user_id={meme.user_id}
           title={meme.title}
-          url={meme.imageUrl}
+          imageUrl={meme.imageUrl}
         />
       )
     })
 
     return(
       <div>
-        <div>
+        <div id="gallery">
           {memes}
-        </div>
-        <div>
-          <a href = {'/memes/new'}>Add New Meme</a>
         </div>
       </div>
     )
