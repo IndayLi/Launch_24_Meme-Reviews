@@ -1,92 +1,92 @@
-import React, { Component } from 'react'
-import TextField from './TextField'
+import React, { Component } from "react";
+import TextField from "./TextField";
 
 class MemesFormContainer extends Component {
   constructor(props) {
     super(props);
-    this.state={
-      title: '',
-      imageUrl: '',
-      description: ''
-    }
-    this.handleOnChange = this.handleOnChange.bind(this)
-    this.handleOnSubmit = this.handleOnSubmit.bind(this)
+    this.state = {
+      title: "",
+      imageUrl: "",
+      description: ""
+    };
+    this.handleOnChange = this.handleOnChange.bind(this);
+    this.handleOnSubmit = this.handleOnSubmit.bind(this);
   }
 
   handleOnChange(event) {
-    let newData = event.target.value
-    this.setState({[event.target.name] : newData})
+    let newData = event.target.value;
+    this.setState({ [event.target.name]: newData });
   }
 
-  handleOnSubmit(event){
-    event.preventDefault()
-    let memePayload={
+  handleOnSubmit(event) {
+    event.preventDefault();
+    let memePayload = {
       title: this.state.title,
       imageUrl: this.state.imageUrl,
       description: this.state.description
     };
 
-    fetch('/api/v1/memes', {
-      credentials: 'same-origin',
-      method: 'POST',
+    fetch("/api/v1/memes", {
+      credentials: "same-origin",
+      method: "POST",
       body: JSON.stringify(memePayload),
       headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
+        Accept: "application/json",
+        "Content-Type": "application/json"
       }
     })
-    .then(response => {
-      if (response.ok) {
-        return response;
-      } else {
-        let errorMessage = `${response.status}(${response.statusText})` ,
-        error = new Error(errorMessage);
-        throw(error);
-      }
-    })
-    .then(response => response.json())
-    .then(body => {
-      return window.location.href = `/memes/${body.meme.id}`
-    })
-    .catch(error => console.error(`Error in fetch: ${error.message}`));
+      .then(response => {
+        if (response.ok) {
+          return response;
+        } else {
+          let errorMessage = `${response.status}(${response.statusText})`,
+            error = new Error(errorMessage);
+          throw error;
+        }
+      })
+      .then(response => response.json())
+      .then(body => {
+        return (window.location.href = `/memes/${body.meme.id}`);
+      })
+      .catch(error => console.error(`Error in fetch: ${error.message}`));
 
-    this.clearForm()
+    this.clearForm();
   }
 
-  clearForm(){
-    this.setState({title: '', imageUrl: '', description: ''})
+  clearForm() {
+    this.setState({ title: "", imageUrl: "", description: "" });
   }
 
   render() {
-    return(
+    return (
       <div id="new-meme-form">
         <h2>Submit A New Meme</h2>
         <br />
         <form onSubmit={this.handleOnSubmit}>
           <TextField
-            labelName='Title'
-            inputName='title'
+            labelName="Title"
+            inputName="title"
             value={this.state.title}
             handleOnChange={this.handleOnChange}
           />
           <TextField
-            labelName='URL'
-            inputName='imageUrl'
+            labelName="URL"
+            inputName="imageUrl"
             value={this.state.imageUrl}
             handleOnChange={this.handleOnChange}
           />
           <TextField
-            labelName='Description'
-            inputName='description'
+            labelName="Description"
+            inputName="description"
             value={this.state.description}
             handleOnChange={this.handleOnChange}
           />
           <br />
-          <input type ="submit" className="button" value="Submit"/>
+          <input type="submit" className="button" value="Submit" />
         </form>
       </div>
-    )
+    );
   }
 }
 
-export default MemesFormContainer
+export default MemesFormContainer;
