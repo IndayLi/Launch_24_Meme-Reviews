@@ -62,8 +62,9 @@ class ReviewsContainer extends Component {
     return (
       <div id="meme-reviews">
         <div className="meme-review-array-container">{reviewArray}</div>
-        <div id="review-form">
+        <div>
           <ReviewsFormContainer
+            currentUser={this.props.currentUser}
             memeId={this.props.memeId}
             addReview={this.addReview}
           />

@@ -60,28 +60,30 @@ class ReviewsFormContainer extends Component {
   }
 
   render() {
-    return (
-      <div>
-        <form
-          onSubmit={this.handleOnSubmit}
-          className="review-form-render">
-          <TextField
-            type="number"
-            labelName="rating"
-            inputName="rating"
-            value={this.state.rating}
-            handleOnChange={this.handleOnChange}
-          />
-          <TextField
-            labelName="comment"
-            inputName="comment"
-            value={this.state.comment}
-            handleOnChange={this.handleOnChange}
-          />
-          <input type="submit" value="Submit" className="button" />
-        </form>
-      </div>
-    );
+    let reviewForm = "";
+    if (this.props.currentUser != 0) {
+      reviewForm = (
+        <div id="review-form">
+          <form onSubmit={this.handleOnSubmit} className="review-form-render">
+            <TextField
+              type="number"
+              labelName="rating"
+              inputName="rating"
+              value={this.state.rating}
+              handleOnChange={this.handleOnChange}
+            />
+            <TextField
+              labelName="comment"
+              inputName="comment"
+              value={this.state.comment}
+              handleOnChange={this.handleOnChange}
+            />
+            <input type="submit" value="Submit" className="button" />
+          </form>
+        </div>
+      );
+    }
+    return <div>{reviewForm}</div>;
   }
 }
 
