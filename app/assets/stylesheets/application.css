@@ -198,18 +198,6 @@ label {
   z-index: 100;
 }
 
-@media (max-width: 800px) {
-  #show-page {
-    display: initial;
-    max-width: 90%;
-    padding: 0;
-  }
-
-  #show-page img {
-    grid-area: none;
-  }
-}
-
 #show-text p {
   background-color: #cbcbcb;
   border: 15px solid rgba(139, 191, 187, 0.75);
@@ -365,4 +353,29 @@ label {
 
 .hidden {
   display: none;
+}
+
+
+/* MEDIA QUERIES */
+
+@media (max-width: 800px) {
+  #header h1 {
+    font-size: 400%;
+  }
+
+  #show-text h2 {
+    font-size: 150%;
+    margin-top: 15px;
+  }
+
+  #show-page {
+    display: initial;
+    max-width: 90%;
+    padding: 0;
+  }
+
+  #show-page img {
+    grid-area: none;
+    margin-top: 15px;
+  }
 }
