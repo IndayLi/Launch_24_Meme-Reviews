@@ -103,6 +103,7 @@ RSpec.describe Api::V1::MemesController, type: :controller do
     let!(:user) { FactoryBot.create(:user, role: "member") };
     let!(:user2) { FactoryBot.create(:user, role: "member") };
     let!(:meme) { FactoryBot.create(:meme, user: user) };
+    let!(:admin) { FactoryBot.create(:user, role: "admin")}
     it "deletes a meme" do
       sign_in user
 
@@ -114,6 +115,12 @@ RSpec.describe Api::V1::MemesController, type: :controller do
       sign_in user2
 
       expect{ delete :destroy, params: { id: meme.id } }.to change(Meme, :count).by(0)
+    end
+
+    it "allows admin to delete any meme" do
+      sign_in admin
+
+      expect{ delete :destroy, params: { id: meme.id } }.to change(Meme, :count).by(-1)
     end
   end
 end

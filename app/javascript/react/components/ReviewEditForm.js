@@ -47,7 +47,7 @@ class ReviewEditForm extends Component {
       })
       .then(response => response.json())
       .then(body => {
-      if (this.state.error === "") {
+        if (body.error === "") {
           this.props.onEdit();
           this.props.forceRender();
         } else {
@@ -60,6 +60,7 @@ class ReviewEditForm extends Component {
   render() {
     return (
       <div>
+        <h5>{this.state.error}</h5>
         <form onSubmit={this.handleOnSubmit} className="review-form-edit">
           <TextField
             type="number"
