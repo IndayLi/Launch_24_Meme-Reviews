@@ -47,7 +47,7 @@ class ReviewEditForm extends Component {
       })
       .then(response => response.json())
       .then(body => {
-        if (this.state.error === "") {
+      if (this.state.error === "") {
           this.props.onEdit();
           this.props.forceRender();
         } else {
