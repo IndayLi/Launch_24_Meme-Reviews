@@ -49,7 +49,7 @@ class Api::V1::MemesController < ApplicationController
       if meme.save
         render json: {error: ""}
       else
-        render json: {error: "That is not a valid input."}
+        render json: {error: "Please enter a Title."}
       end
     else
       render json: {error: "You did not post these Meme."}
