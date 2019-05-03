@@ -305,35 +305,48 @@ label {
 
 .sign-up,
 .log-in,
-.new-meme {
+.new-meme,
+.forgot-password {
   margin: 0 auto;
   position: relative;
   top: 50px;
   width: 33%;
 }
 
-.sign-up h3 {
+.forgot-password h2 {
+  font-size: 35px;
+}
+
+.sign-up h3,
+.forgot-password h3 {
   font-size: 20px;
   font-weight: bold;
 }
 
 .sign-up label,
-.log-in label:first-child {
+.log-in label:first-child,
+.forgot-password label {
   position: relative;
   top: 25px;
 }
 
 .sign-up em,
-.log-in em {
+.log-in em,
+.forgot-password em {
   font-size: 12px;
   position: absolute;
   right: 0px;
 }
 
 .sign-up .actions input,
-.log-in .actions input {
+.log-in .actions input,
+.forgot-password .actions input {
   margin: 20px 0;
   width: 100%;
+}
+
+.forgot-password a {
+  margin: 0 auto;
 }
 
 /* FLASH FORMATTING */
@@ -381,16 +394,15 @@ label {
 
   .sign-up,
   .log-in,
-  .new-meme {
+  .new-meme,
+  .forgot-password {
     margin: 0 auto;
     position: relative;
     top: 75px;
     width: 90%;
   }
 
-  .sign-up h2,
-  .log-in h2,
-  .new-meme h2 {
-    font-size: 200%;
+  .forgot-password h2 {
+    font-size: 190%;
   }
 }
