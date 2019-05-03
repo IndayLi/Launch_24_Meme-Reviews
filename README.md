@@ -11,13 +11,11 @@ Ruby version 2.4.5
 
 DESCRIPTION:
 
-As a user
-I want to see a list of memes on the /memes page
-So I can see what memes are available for review
+A library and public website allowing users to view memes, contribute to the meme database, and leave reviews.
 
-As a user
-I want to click on a meme and have it redirect me to its corresponding page which has reviews on it
-So I can see what others have said about it
+
+
+
 
 
 1) Version-locks dependencies to mutually compatible versions that we use elsewhere in the curriculum (e.g., React Router 3, not 4)
@@ -38,4 +36,3 @@ DC Anthony
 Leona Marzinotto
 
 Nick Kim
-
