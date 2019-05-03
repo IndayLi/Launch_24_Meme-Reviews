@@ -99,13 +99,18 @@ class ReviewTile extends Component {
     } else {
       form = "";
     }
-    
+
+    let rating = []
+    for (let i=0; i <= this.props.rating; i++) {
+      rating.push("★")
+    }
+
     return (
       <div className="review-tile">
         <dd className={"memeId" + this.props.memeId}>
           <dl className="review-username">— {this.props.username}</dl>
           <dl className="review-date">{this.props.timestamp}</dl>
-          <dl className="review-rating">{this.props.rating}★</dl>
+          <dl className="review-rating">{rating}</dl>
           <dl className="review-comment">{this.props.comment}</dl>
         </dd>
         <div>{reviewButtons}</div>
