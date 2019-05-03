@@ -2,28 +2,36 @@
 
 [![Codeship Status for IndayLi/Launch_24_Meme-Reviews](https://app.codeship.com/projects/05476c30-4750-0137-27b0-1201e7d87ad3/status?branch=master)](https://app.codeship.com/projects/337464)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-Ruby version 2.4.5
-
 DESCRIPTION:
 
-A library and public website allowing users to view memes, contribute to the meme database, and leave reviews.
+Meme Reviews is a web app that allows users to upload, rate, and review their favorite memes.
+On the home page you will see a collection of memes.
 
+Create an account, upload a meme and
+comment on your friends' memes!
 
+https://warm-bastion-20086.herokuapp.com/
 
+FEATURES:
 
+- Sign in, sign up, sign out
+- Create, Update, Edit, and Delete your memes and comments
+- Admin functionality and privileges
 
+TECHNOLOGIES:
 
-1) Version-locks dependencies to mutually compatible versions that we use elsewhere in the curriculum (e.g., React Router 3, not 4)
-2) Configures Devise
-3) Configures React with Webpacker (including react-webpacker)
-4) Configures Karma, Jasmine, and Enzyme
-5) Overrides certain Rails defaults to match the tools we teach (e.g., Postgres instead of SQLite, rspec instead of minitest)
-
+- Ruby (2.4.5) on Rails (5.2.3)
+- React (react-router-v3)
+- Devise
+- Jasmine/Enzyme
+- Flexbox
+- RSpec
+- PostgreSQL
+- Media Queries
+- CSS Grid
+- CSS Combinators
+- Google Fonts API
+- Pseudo Classes
 
 AUTHORS:
 
