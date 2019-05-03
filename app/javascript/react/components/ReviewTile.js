@@ -120,4 +120,3 @@ class ReviewTile extends Component {
 }
 
 export default ReviewTile;
-    // <dl className="review-rating">{this.props.rating}★</dl>
