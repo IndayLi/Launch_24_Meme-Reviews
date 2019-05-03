@@ -282,7 +282,8 @@ h2 {
 
 #review-form .button,
 #new-meme-form .button,
-.review-form-edit .button {
+.review-form-edit .button,
+.meme-form-edit .button {
    background-color: rgba(103,66,88,0.9);
    width: 100%;
 }
