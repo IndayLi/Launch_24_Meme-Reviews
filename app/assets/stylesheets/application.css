@@ -240,7 +240,7 @@ label {
   font-style: italic;
   position: absolute;
   right: 10px;
-  top: 10px;
+  top: 5px;
 }
 
 .review-tile .review-username {
@@ -256,7 +256,7 @@ label {
   font-weight: bold;
   line-height: 5px;
   position: relative;
-  top: 5px;
+  top: 12px;
 }
 
 .review-tile .review-comment {
@@ -377,5 +377,20 @@ label {
   #show-page img {
     grid-area: none;
     margin-top: 15px;
+  }
+
+  .sign-up,
+  .log-in,
+  .new-meme {
+    margin: 0 auto;
+    position: relative;
+    top: 75px;
+    width: 90%;
+  }
+
+  .sign-up h2,
+  .log-in h2,
+  .new-meme h2 {
+    font-size: 200%;
   }
 }
