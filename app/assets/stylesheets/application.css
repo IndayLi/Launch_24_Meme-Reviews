@@ -85,6 +85,7 @@ label {
   position: absolute;
   right: 20px;
   text-shadow: 3px 3px 3px #111;
+  text-transform: lowercase;
   top: -40px;
 }
 
