@@ -218,6 +218,10 @@ label {
   position: relative;
 }
 
+#meme-description .meme-edit-form {
+  margin: 30px 0 0 0;
+}
+
 /* REVIEWS ON THE SHOW PAGE BELOW */
 
 #meme-reviews {

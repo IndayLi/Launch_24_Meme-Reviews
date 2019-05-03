@@ -101,7 +101,6 @@ class ShowContainer extends Component {
     if (this.state.showEdit) {
       form = (
         <div>
-          <h5>Edit Meme</h5>
           <MemeEditForm
             memeId={memeId}
             forceRender={this.forceRender}
@@ -149,9 +148,13 @@ class ShowContainer extends Component {
             </div>
           </h2>
           <div id="meme-description">
-            <p>{this.state.meme.description}</p>
-            <div>{this.state.error}</div>
-            <div>{form}</div>
+            <p>
+              {this.state.meme.description}
+              <div className="meme-edit-form">
+                <div>{this.state.error}</div>
+                <div>{form}</div>
+              </div>
+            </p>
           </div>
           <ReviewsContainer
             currentUser={this.state.currentUser}
