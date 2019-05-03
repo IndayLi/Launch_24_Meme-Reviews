@@ -26,10 +26,17 @@ body {
   font-family: "Open Sans", sans-serif;
 }
 
+body {
+  background-color: #F0F2EF;
+  background-image: url("https://images2.imgbox.com/f3/3f/3PZbsiJm_o.png");
+  background-attachment: fixed;
+  font-family: 'Open Sans', sans-serif;
+}
+
 h2 {
-  background-color: rgba(103, 66, 88, 0.9);
-  color: #8bbfbb;
-  font-family: "Fjalla One", sans-serif;
+  background-color: rgba(103,66,88,0.9);
+  color: #8BBFBB;
+  font-family: 'Fjalla One', sans-serif;
   font-size: 40px;
   letter-spacing: 1px;
   margin: 0;
@@ -39,10 +46,31 @@ h2 {
   text-shadow: 1px 1px 2px #111;
 }
 
+a {
+  color: #63444a;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: .2s;
+}
+
+a:hover {
+  background-color: #63444a;
+  color: #8BBFBB;
+}
+
+label {
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+
 /* HEADER CSS BELOW */
 
 #header {
-  background-color: rgba(139, 191, 187, 0.75);
+  background-color: rgba(139,191,187, 0.75);
   height: 40px;
   margin-top: 40px;
   opacity: 0.9;
@@ -50,8 +78,8 @@ h2 {
 }
 
 #header h1 {
-  color: rgb(79, 51, 68);
-  font-family: "Fjalla One", sans-serif;
+  color: rgb(79,51,68);
+  font-family: 'Fjalla One', sans-serif;
   font-size: 70px;
   letter-spacing: 1px;
   position: absolute;
@@ -61,7 +89,7 @@ h2 {
 }
 
 #nav {
-  background-color: rgb(103, 66, 88);
+  background-color: rgb(103,66,88);
   box-shadow: 4px 4px 8px;
   height: 25px;
   opacity: 0.9;
@@ -76,7 +104,7 @@ h2 {
 }
 
 #nav a {
-  color: #8bbfbb;
+  color: #8BBFBB;
   font-size: 15px;
   font-weight: bold;
   letter-spacing: 1px;
@@ -90,6 +118,7 @@ h2 {
   color: #f0f0f0;
 }
 
+
 /* GALLERY CSS BELOW */
 
 #gallery {
@@ -101,14 +130,17 @@ h2 {
   border: 3px solid #63444a;
   border-radius: 10px;
   box-shadow: 4px 4px 6px;
+  filter: grayscale(70%);
   object-fit: cover;
   opacity: 0.6;
   transition: 0.75s;
 }
 
 #gallery img:hover {
+  filter: grayscale(0%);
   opacity: 1;
 }
+
 
 /* SHOW PAGE BELOW */
 
@@ -186,6 +218,10 @@ h2 {
   min-height: 150px;
   padding: 15px;
   position: relative;
+}
+
+#meme-description .meme-edit-form {
+  margin: 30px 0 0 0;
 }
 
 /* REVIEWS ON THE SHOW PAGE BELOW */
@@ -272,7 +308,7 @@ h2 {
 #new-meme-form .button,
 .review-form-edit .button,
 .meme-form-edit .button {
-  background-color: rgba(103, 66, 88, 0.9);
+  background-color: rgba(103,66,88,0.9);
   width: 100%;
 }
 
@@ -287,6 +323,11 @@ h2 {
   width: 33%;
 }
 
+.sign-up h3 {
+  font-size: 20px;
+  font-weight: bold;
+}
+
 .sign-up label,
 .log-in label:first-child {
   position: relative;
@@ -298,7 +339,6 @@ h2 {
   font-size: 12px;
   position: absolute;
   right: 0px;
-  top: 180px;
 }
 
 .sign-up .actions input,
