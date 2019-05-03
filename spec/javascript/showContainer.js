@@ -70,7 +70,9 @@ describe("ShowContainer", () => {
       expect(wrapper.find("img").props()).toEqual({
         src: "https://i.imgur.com/4wVB82o.png"
       });
-      expect(wrapper.find("p").node.innerHTML).toContain("Let's play a game...!");
+      expect(wrapper.find("p").node.innerHTML).toContain(
+        "Let's play a game...!"
+      );
       done();
     }, 0);
   });

@@ -61,7 +61,7 @@ class ReviewsFormContainer extends Component {
 
   render() {
     let reviewForm = "";
-    if (this.props.currentUser != 0) {
+    if (this.props.currentUser.id != 0) {
       reviewForm = (
         <div id="review-form">
           <form onSubmit={this.handleOnSubmit} className="review-form-render">

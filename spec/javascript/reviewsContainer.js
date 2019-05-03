@@ -22,13 +22,18 @@ describe("ReviewsContainer", () => {
       comment: "Test comment two"
     }
   ];
+  let user = {
+    id: 1,
+    username: "username",
+    email: "example@example.com"
+  };
 
   beforeEach(() => {
     fetchMock.get(`/api/v1/memes/1/reviews`, {
       status: 200,
       body: { reviews }
     });
-    wrapper = mount(<ReviewsContainer memeId={1} />);
+    wrapper = mount(<ReviewsContainer memeId={1} currentUser={user} />);
   });
 
   afterEach(fetchMock.restore);

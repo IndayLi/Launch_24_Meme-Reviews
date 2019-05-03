@@ -171,7 +171,7 @@ class ShowContainer extends Component {
             </p>
           </div>
           <ReviewsContainer
-            currentUser={this.state.currentUser.id}
+            currentUser={this.state.currentUser}
             memeId={memeId}
             forceRender={this.forceRender}
           />
