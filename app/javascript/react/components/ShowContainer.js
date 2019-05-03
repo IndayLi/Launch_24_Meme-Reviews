@@ -54,6 +54,13 @@ class ShowContainer extends Component {
       })
       .then(response => response.json())
       .then(body => {
+        let noUser = {
+          id: 0,
+          role: "Not Signed In"
+        };
+        if (body.current_user === null) {
+          body.current_user = noUser;
+        }
         this.setState({ meme: body.meme, currentUser: body.current_user });
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`));
@@ -89,7 +96,6 @@ class ShowContainer extends Component {
         .then(response => response.json())
         .then(body => {
           return (window.location.href = "/memes");
-          this.setState({ meme: body.meme, currentUser: body.user_id });
         })
         .catch(error => console.error(`Error in fetch: ${error.message}`));
     }
