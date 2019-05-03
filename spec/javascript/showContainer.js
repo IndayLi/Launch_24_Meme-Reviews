@@ -12,7 +12,7 @@ describe("ShowContainer", () => {
       password: "password",
       password_confirmation: "password",
       role: "member"
-    }
+    };
 
     meme = {
       id: 1,
@@ -32,7 +32,7 @@ describe("ShowContainer", () => {
       body: { test: "test" }
     });
 
-    wrapper = mount(<ShowContainer params={{id: user.id}} />);
+    wrapper = mount(<ShowContainer params={{ id: user.id }} />);
   });
 
   afterEach(fetchMock.restore);
@@ -44,7 +44,7 @@ describe("ShowContainer", () => {
     }, 0);
   });
 
-  it("should render an h2 and img tag", (done) => {
+  it("should render an h2 and img tag", done => {
     setTimeout(() => {
       expect(wrapper.find("h2")).toBePresent();
       expect(wrapper.find("img")).toBePresent();
@@ -54,7 +54,12 @@ describe("ShowContainer", () => {
 
   it("updates state to contain meme", done => {
     setTimeout(() => {
-      expect(wrapper.state()).toEqual({ meme: meme, currentUser: user});
+      expect(wrapper.state()).toEqual({
+        meme: meme,
+        currentUser: user,
+        showEdit: false,
+        error: ""
+      });
       done();
     }, 0);
   });
