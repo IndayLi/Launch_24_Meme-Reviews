@@ -41,6 +41,21 @@ class Api::V1::MemesController < ApplicationController
     end
   end
 
+  def update
+    meme = Meme.find(params[:meme_id])
+    if current_user.id == meme.user.id || current_user.role == "admin"
+      meme.title = params[:title]
+      meme.description = params[:description]
+      if meme.save
+        render json: {error: ""}
+      else
+        render json: {error: "That is not a valid input."}
+      end
+    else
+      render json: {error: "You did not post these Meme."}
+    end
+  end
+
   private
 
   def user_signed_in

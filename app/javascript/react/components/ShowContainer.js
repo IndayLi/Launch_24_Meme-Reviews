@@ -1,17 +1,37 @@
 import React, { Component } from "react";
 import ReviewsContainer from "./ReviewsContainer";
 import ReviewsFormContainer from "./ReviewsFormContainer";
+import MemeEditForm from "./MemeEditForm";
 
 class ShowContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
       meme: {},
-      currentUser: ""
+      currentUser: "",
+      showEdit: false,
+      error: ""
     };
     this.deleteMeme = this.deleteMeme.bind(this);
+    this.toggleEdit = this.toggleEdit.bind(this);
+    this.forceRender = this.forceRender.bind(this);
+    this.setError = this.setError.bind(this);
   }
 
+  setError(error) {
+    this.setState({ error: error });
+  }
+  forceRender() {
+    this.componentDidMount();
+  }
+
+  toggleEdit() {
+    if (this.state.showEdit) {
+      this.setState({ showEdit: false });
+    } else {
+      this.setState({ showEdit: true });
+    }
+  }
   componentDidMount() {
     let memeId = this.props.params.id;
 
@@ -77,6 +97,22 @@ class ShowContainer extends Component {
 
   render() {
     let memeId = this.props.params.id;
+    let form;
+    if (this.state.showEdit) {
+      form = (
+        <div>
+          <h5>Edit Meme</h5>
+          <MemeEditForm
+            memeId={memeId}
+            forceRender={this.forceRender}
+            toggleEdit={this.toggleEdit}
+            setError={this.setError}
+          />
+        </div>
+      );
+    } else {
+      form = "";
+    }
     return (
       <div id="show-page">
         <div id="show-image">
@@ -87,15 +123,17 @@ class ShowContainer extends Component {
             {this.state.meme.title}
             <div className="memeButtons">
               <div>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" />
-                  <path d="M0 0h24v24H0z" fill="none" />
-                </svg>
+                <div onClick={this.toggleEdit}>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" />
+                    <path d="M0 0h24v24H0z" fill="none" />
+                  </svg>
+                </div>
               </div>
               <div onClick={this.deleteMeme}>
                 <svg
@@ -112,6 +150,8 @@ class ShowContainer extends Component {
           </h2>
           <div id="meme-description">
             <p>{this.state.meme.description}</p>
+            <div>{this.state.error}</div>
+            <div>{form}</div>
           </div>
           <ReviewsContainer
             currentUser={this.state.currentUser}

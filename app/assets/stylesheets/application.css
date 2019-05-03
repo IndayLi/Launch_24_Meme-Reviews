@@ -16,11 +16,15 @@
 
  */
 
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
 
- * {
-   box-sizing: border-box;
-   margin: 0;
- }
+body {
+  background-color: #f0f2ef;
+  font-family: "Open Sans", sans-serif;
+}
 
  body {
    background-color: #F0F2EF;
@@ -151,8 +155,8 @@ label {
 }
 
 #show-page #show-image {
-   position: relative;
-   text-align: center;
+  position: relative;
+  text-align: center;
 }
 
 #show-page img {
@@ -169,9 +173,9 @@ label {
 }
 
 #show-page h2 {
-  background-color: rgba(103,66,88,0.9);
-  color: #8BBFBB;
-  font-family: 'Fjalla One', sans-serif;
+  background-color: rgba(103, 66, 88, 0.9);
+  color: #8bbfbb;
+  font-family: "Fjalla One", sans-serif;
   font-size: 40px;
   letter-spacing: 1px;
   margin: 0;
@@ -192,20 +196,20 @@ label {
 }
 
 @media (max-width: 800px) {
-   #show-page {
-      display: initial;
-      max-width: 90%;
-      padding: 0;
-   }
+  #show-page {
+    display: initial;
+    max-width: 90%;
+    padding: 0;
+  }
 
-   #show-page img {
-      grid-area: none;
-   }
+  #show-page img {
+    grid-area: none;
+  }
 }
 
 #show-text p {
-  background-color: #CBCBCB;
-  border: 15px solid rgba(139,191,187, 0.75);
+  background-color: #cbcbcb;
+  border: 15px solid rgba(139, 191, 187, 0.75);
   color: #111;
   font-size: 1.25em;
   letter-spacing: 1px;
@@ -213,7 +217,6 @@ label {
   padding: 15px;
   position: relative;
 }
-
 
 /* REVIEWS ON THE SHOW PAGE BELOW */
 
@@ -229,7 +232,7 @@ label {
 }
 
 .review-tile {
-  background-color: #CBCBCB;
+  background-color: #cbcbcb;
   flex-direction: row;
   margin: 0 0 20px 0;
   padding: 15px;
@@ -266,54 +269,52 @@ label {
 }
 
 .review-tile .reviewButtons {
-   bottom: 5px;
-   display: flex;
-   justify-content: space-between;
-   right: 5px;
-   position: absolute;
-   width: 45px;
+  bottom: 5px;
+  display: flex;
+  justify-content: space-between;
+  right: 5px;
+  position: absolute;
+  width: 45px;
 }
-
 
 /* FORM ON THE SHOW PAGE FOR NEW REVIEWS */
 
 #review-form {
-   background-color: rgba(139,191,187, 0.75);
-   color: #111;
-   font-size: 1.25em;
-   letter-spacing: 1px;
-   min-height: 150px;
-   padding: 30px 30px 15px 30px;
+  background-color: rgba(139, 191, 187, 0.75);
+  color: #111;
+  font-size: 1.25em;
+  letter-spacing: 1px;
+  min-height: 150px;
+  padding: 30px 30px 15px 30px;
 }
 
 .review-form-render {
-   display: flex;
-   flex-flow: row wrap;
-   justify-content: space-between;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
 }
 
 .review-form-render > * {
-   min-width: 45%;
+  min-width: 45%;
 }
 
 #review-form .button,
 #new-meme-form .button,
 .review-form-edit .button,
 .meme-form-edit .button {
-   background-color: rgba(103,66,88,0.9);
-   width: 100%;
+  background-color: rgba(103,66,88,0.9);
+  width: 100%;
 }
-
 
 /* SIGN UP FORM */
 
 .sign-up,
 .log-in,
 .new-meme {
-   margin: 0 auto;
-   position: relative;
-   top: 50px;
-   width: 33%;
+  margin: 0 auto;
+  position: relative;
+  top: 50px;
+  width: 33%;
 }
 
 .sign-up h3 {
@@ -323,41 +324,38 @@ label {
 
 .sign-up label,
 .log-in label:first-child {
-   position: relative;
-   top: 25px;
+  position: relative;
+  top: 25px;
 }
 
 .sign-up em,
 .log-in em {
-   font-size: 12px;
-   position: absolute;
-   right: 0px;
+  font-size: 12px;
+  position: absolute;
+  right: 0px;
 }
 
 .sign-up .actions input,
 .log-in .actions input {
-   margin: 20px 0;
-   width: 100%;
+  margin: 20px 0;
+  width: 100%;
 }
-
-
 
 /* FLASH FORMATTING */
 
 .flash {
-   color: #63444a;
-   font-size: 24px;
-   font-weight: bold;
-   letter-spacing: 2px;
-   padding: 30px 0 0 0;
-   position: relative;
-   text-align: center;
-   text-transform: uppercase;
+  color: #63444a;
+  font-size: 24px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  padding: 30px 0 0 0;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
 }
-
 
 /* HIDDEN CLASS */
 
 .hidden {
-   display: none;
+  display: none;
 }
