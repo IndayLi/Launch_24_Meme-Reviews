@@ -198,18 +198,6 @@ label {
   z-index: 100;
 }
 
-@media (max-width: 800px) {
-  #show-page {
-    display: initial;
-    max-width: 90%;
-    padding: 0;
-  }
-
-  #show-page img {
-    grid-area: none;
-  }
-}
-
 #show-text p {
   background-color: #cbcbcb;
   border: 15px solid rgba(139, 191, 187, 0.75);
@@ -252,7 +240,7 @@ label {
   font-style: italic;
   position: absolute;
   right: 10px;
-  top: 10px;
+  top: 5px;
 }
 
 .review-tile .review-username {
@@ -268,7 +256,7 @@ label {
   font-weight: bold;
   line-height: 5px;
   position: relative;
-  top: 5px;
+  top: 12px;
 }
 
 .review-tile .review-comment {
@@ -317,35 +305,48 @@ label {
 
 .sign-up,
 .log-in,
-.new-meme {
+.new-meme,
+.forgot-password {
   margin: 0 auto;
   position: relative;
   top: 50px;
   width: 33%;
 }
 
-.sign-up h3 {
+.forgot-password h2 {
+  font-size: 35px;
+}
+
+.sign-up h3,
+.forgot-password h3 {
   font-size: 20px;
   font-weight: bold;
 }
 
 .sign-up label,
-.log-in label:first-child {
+.log-in label:first-child,
+.forgot-password label {
   position: relative;
   top: 25px;
 }
 
 .sign-up em,
-.log-in em {
+.log-in em,
+.forgot-password em {
   font-size: 12px;
   position: absolute;
   right: 0px;
 }
 
 .sign-up .actions input,
-.log-in .actions input {
+.log-in .actions input,
+.forgot-password .actions input {
   margin: 20px 0;
   width: 100%;
+}
+
+.forgot-password a {
+  margin: 0 auto;
 }
 
 /* FLASH FORMATTING */
@@ -365,4 +366,43 @@ label {
 
 .hidden {
   display: none;
+}
+
+
+/* MEDIA QUERIES */
+
+@media (max-width: 800px) {
+  #header h1 {
+    font-size: 400%;
+  }
+
+  #show-text h2 {
+    font-size: 150%;
+    margin-top: 15px;
+  }
+
+  #show-page {
+    display: initial;
+    max-width: 90%;
+    padding: 0;
+  }
+
+  #show-page img {
+    grid-area: none;
+    margin-top: 15px;
+  }
+
+  .sign-up,
+  .log-in,
+  .new-meme,
+  .forgot-password {
+    margin: 0 auto;
+    position: relative;
+    top: 75px;
+    width: 90%;
+  }
+
+  .forgot-password h2 {
+    font-size: 190%;
+  }
 }
