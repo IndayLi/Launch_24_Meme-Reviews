@@ -10,15 +10,15 @@ class ReviewsContainer extends Component {
       currentUser: this.props.currentUser
     };
     this.addReview = this.addReview.bind(this);
-    this.removeReview = this.removeReview.bind(this);
+    this.forceRender = this.forceRender.bind(this);
+  }
+
+  forceRender() {
+    this.componentDidMount();
   }
 
   addReview(review) {
-    this.setState({ reviews: this.state.reviews.concat(review) });
-  }
-
-  removeReview(review) {
-    this.componentDidMount();
+    this.forceRender();
   }
 
   componentDidMount() {
@@ -54,8 +54,8 @@ class ReviewsContainer extends Component {
           username={review.username}
           rating={review.rating}
           comment={review.comment}
-          removeReview={this.removeReview}
-          currentUser={this.props.currentUser.id}
+          currentUser={this.props.currentUser}
+          forceRender={this.forceRender}
         />
       );
     });

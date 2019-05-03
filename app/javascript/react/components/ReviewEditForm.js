@@ -6,8 +6,9 @@ class ReviewEditForm extends Component {
     super(props);
     this.state = {
       rating: this.props.rating,
-      comment: this.props.comment
-    }
+      comment: this.props.comment,
+      errors: ""
+    };
     this.handleOnChange = this.handleOnChange.bind(this);
     this.handleOnSubmit = this.handleOnSubmit.bind(this);
   }
@@ -16,7 +17,6 @@ class ReviewEditForm extends Component {
     let newEdit = event.target.value;
     this.setState({ [event.target.name]: newEdit });
   }
-
 
   handleOnSubmit(event) {
     event.preventDefault();
@@ -27,7 +27,15 @@ class ReviewEditForm extends Component {
       id: this.props.id
     };
 
-    fetch(`/api/v1/memes/${this.props.memeId}/reviews/${this.props.id}/edit`)
+    fetch(`/api/v1/memes/${this.props.memeId}/reviews/${this.props.id}`, {
+      credentials: "same-origin",
+      method: "PATCH",
+      body: JSON.stringify(reviewPayload),
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      }
+    })
       .then(response => {
         if (response.ok) {
           return response;
@@ -39,18 +47,20 @@ class ReviewEditForm extends Component {
       })
       .then(response => response.json())
       .then(body => {
-        debugger
+      if (this.state.error === "") {
+          this.props.onEdit();
+          this.props.forceRender();
+        } else {
+          this.setState({ error: body.error });
+        }
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`));
-
   }
 
   render() {
-
-    return(
+    return (
       <div>
-        <form onSubmit={this.handleOnSubmit}
-          className="review-form-edit">
+        <form onSubmit={this.handleOnSubmit} className="review-form-edit">
           <TextField
             type="number"
             labelName="rating"

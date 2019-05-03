@@ -18,10 +18,10 @@ class Api::V1::ReviewsController < ApplicationController
         status: :unprocessable_entity
     end
   end
-
+  
   def destroy
     review = Review.find(params[:id])
-    if params[:review][:id].to_i == current_user.id
+    if params[:review][:id].to_i == current_user.id || current_user.role == 'admin'
       Review.find(params[:id]).delete
       render json: {deletedReview: review}
     else
@@ -30,8 +30,15 @@ class Api::V1::ReviewsController < ApplicationController
     end
   end
 
-  def edit
-
+  def update
+    review = Review.find(params[:id])
+    review.rating = params[:rating]
+    review.comment = params[:comment]
+    if review.save
+      render json: {error: ""}
+    else
+      render json: {error: "That is not a valid rating."}
+    end
   end
 
   private
