@@ -16,107 +16,101 @@
 
  */
 
-
- * {
-   box-sizing: border-box;
-   margin: 0;
- }
-
- body {
-   background-color: #F0F2EF;
-   font-family: 'Open Sans', sans-serif;
- }
-
-
-
-h2 {
-   background-color: rgba(103,66,88,0.9);
-   color: #8BBFBB;
-   font-family: 'Fjalla One', sans-serif;
-   font-size: 40px;
-   letter-spacing: 1px;
-   margin: 0;
-   padding: 0px 15px;
-   position: relative;
-   text-transform: uppercase;
-   text-shadow: 1px 1px 2px #111;
+* {
+  box-sizing: border-box;
+  margin: 0;
 }
 
+body {
+  background-color: #f0f2ef;
+  font-family: "Open Sans", sans-serif;
+}
 
- /* HEADER CSS BELOW */
+h2 {
+  background-color: rgba(103, 66, 88, 0.9);
+  color: #8bbfbb;
+  font-family: "Fjalla One", sans-serif;
+  font-size: 40px;
+  letter-spacing: 1px;
+  margin: 0;
+  padding: 0px 15px;
+  position: relative;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 2px #111;
+}
 
- #header {
-   background-color: rgba(139,191,187, 0.75);
-   height: 40px;
-   margin-top: 40px;
-   opacity: 0.9;
-   position: relative;
- }
+/* HEADER CSS BELOW */
 
- #header h1 {
-   color: rgb(79,51,68);
-   font-family: 'Fjalla One', sans-serif;
-   font-size: 70px;
-   letter-spacing: 1px;
-   position: absolute;
-   right: 20px;
-   text-shadow: 3px 3px 3px #111;
-   top: -40px;
- }
+#header {
+  background-color: rgba(139, 191, 187, 0.75);
+  height: 40px;
+  margin-top: 40px;
+  opacity: 0.9;
+  position: relative;
+}
 
- #nav {
-   background-color: rgb(103,66,88);
-   box-shadow: 4px 4px 8px;
-   height: 25px;
-   opacity: 0.9;
-   position: sticky;
-   top: 0;
-   width: 100vw;
-   z-index: 100;
- }
+#header h1 {
+  color: rgb(79, 51, 68);
+  font-family: "Fjalla One", sans-serif;
+  font-size: 70px;
+  letter-spacing: 1px;
+  position: absolute;
+  right: 20px;
+  text-shadow: 3px 3px 3px #111;
+  top: -40px;
+}
 
- #nav span {
-   float: right;
- }
+#nav {
+  background-color: rgb(103, 66, 88);
+  box-shadow: 4px 4px 8px;
+  height: 25px;
+  opacity: 0.9;
+  position: sticky;
+  top: 0;
+  width: 100vw;
+  z-index: 100;
+}
 
- #nav a {
-   color: #8BBFBB;
-   font-size: 15px;
-   font-weight: bold;
-   letter-spacing: 1px;
-   padding: 0px 15px;
-   text-decoration: none;
-   text-transform: uppercase;
-   transition: 0.5s;
- }
+#nav span {
+  float: right;
+}
 
- #nav a:hover {
-   color: #f0f0f0;
- }
+#nav a {
+  color: #8bbfbb;
+  font-size: 15px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  padding: 0px 15px;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: 0.5s;
+}
 
+#nav a:hover {
+  color: #f0f0f0;
+}
 
- /* GALLERY CSS BELOW */
+/* GALLERY CSS BELOW */
 
- #gallery {
-   columns: 4 200px;
-   margin: 50px 15vw;
- }
+#gallery {
+  columns: 4 200px;
+  margin: 50px 15vw;
+}
 
- #gallery img {
-   border: 3px solid #63444a;
-   border-radius: 10px;
-   box-shadow: 4px 4px 6px;
-   object-fit: cover;
-   opacity: 0.6;
-   transition: 0.75s;
- }
+#gallery img {
+  border: 3px solid #63444a;
+  border-radius: 10px;
+  box-shadow: 4px 4px 6px;
+  object-fit: cover;
+  opacity: 0.6;
+  transition: 0.75s;
+}
 
- #gallery img:hover {
-   opacity: 1;
- }
+#gallery img:hover {
+  opacity: 1;
+}
 
-
- /* SHOW PAGE BELOW */
+/* SHOW PAGE BELOW */
 
 #show-page {
   display: grid;
@@ -131,8 +125,8 @@ h2 {
 }
 
 #show-page #show-image {
-   position: relative;
-   text-align: center;
+  position: relative;
+  text-align: center;
 }
 
 #show-page img {
@@ -149,9 +143,9 @@ h2 {
 }
 
 #show-page h2 {
-  background-color: rgba(103,66,88,0.9);
-  color: #8BBFBB;
-  font-family: 'Fjalla One', sans-serif;
+  background-color: rgba(103, 66, 88, 0.9);
+  color: #8bbfbb;
+  font-family: "Fjalla One", sans-serif;
   font-size: 40px;
   letter-spacing: 1px;
   margin: 0;
@@ -172,20 +166,20 @@ h2 {
 }
 
 @media (max-width: 800px) {
-   #show-page {
-      display: initial;
-      max-width: 90%;
-      padding: 0;
-   }
+  #show-page {
+    display: initial;
+    max-width: 90%;
+    padding: 0;
+  }
 
-   #show-page img {
-      grid-area: none;
-   }
+  #show-page img {
+    grid-area: none;
+  }
 }
 
 #show-text p {
-  background-color: #CBCBCB;
-  border: 15px solid rgba(139,191,187, 0.75);
+  background-color: #cbcbcb;
+  border: 15px solid rgba(139, 191, 187, 0.75);
   color: #111;
   font-size: 1.25em;
   letter-spacing: 1px;
@@ -193,7 +187,6 @@ h2 {
   padding: 15px;
   position: relative;
 }
-
 
 /* REVIEWS ON THE SHOW PAGE BELOW */
 
@@ -209,7 +202,7 @@ h2 {
 }
 
 .review-tile {
-  background-color: #CBCBCB;
+  background-color: #cbcbcb;
   flex-direction: row;
   margin: 0 0 20px 0;
   padding: 15px;
@@ -246,93 +239,89 @@ h2 {
 }
 
 .review-tile .reviewButtons {
-   bottom: 5px;
-   display: flex;
-   justify-content: space-between;
-   right: 5px;
-   position: absolute;
-   width: 45px;
+  bottom: 5px;
+  display: flex;
+  justify-content: space-between;
+  right: 5px;
+  position: absolute;
+  width: 45px;
 }
-
 
 /* FORM ON THE SHOW PAGE FOR NEW REVIEWS */
 
 #review-form {
-   background-color: rgba(139,191,187, 0.75);
-   color: #111;
-   font-size: 1.25em;
-   letter-spacing: 1px;
-   min-height: 150px;
-   padding: 30px 30px 15px 30px;
+  background-color: rgba(139, 191, 187, 0.75);
+  color: #111;
+  font-size: 1.25em;
+  letter-spacing: 1px;
+  min-height: 150px;
+  padding: 30px 30px 15px 30px;
 }
 
 .review-form-render {
-   display: flex;
-   flex-flow: row wrap;
-   justify-content: space-between;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
 }
 
 .review-form-render > * {
-   min-width: 45%;
+  min-width: 45%;
 }
 
 #review-form .button,
 #new-meme-form .button,
-.review-form-edit .button {
-   background-color: rgba(103,66,88,0.9);
-   width: 100%;
+.review-form-edit .button,
+.meme-form-edit .button {
+  background-color: rgba(103, 66, 88, 0.9);
+  width: 100%;
 }
-
 
 /* SIGN UP FORM */
 
 .sign-up,
 .log-in,
 .new-meme {
-   margin: 0 auto;
-   position: relative;
-   top: 50px;
-   width: 33%;
+  margin: 0 auto;
+  position: relative;
+  top: 50px;
+  width: 33%;
 }
 
 .sign-up label,
 .log-in label:first-child {
-   position: relative;
-   top: 25px;
+  position: relative;
+  top: 25px;
 }
 
 .sign-up em,
 .log-in em {
-   font-size: 12px;
-   position: absolute;
-   right: 0px;
-   top: 180px;
+  font-size: 12px;
+  position: absolute;
+  right: 0px;
+  top: 180px;
 }
 
 .sign-up .actions input,
 .log-in .actions input {
-   margin: 20px 0;
-   width: 100%;
+  margin: 20px 0;
+  width: 100%;
 }
-
-
 
 /* FLASH FORMATTING */
 
 .flash {
-   color: #63444a;
-   font-size: 24px;
-   font-weight: bold;
-   letter-spacing: 2px;
-   padding: 30px 0 0 0;
-   position: relative;
-   text-align: center;
-   text-transform: uppercase;
+  color: #63444a;
+  font-size: 24px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  padding: 30px 0 0 0;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
 }
-
 
 /* HIDDEN CLASS */
 
 .hidden {
-   display: none;
+  display: none;
 }
