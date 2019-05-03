@@ -54,6 +54,12 @@ a:hover {
    color: #8BBFBB;
 }
 
+label {
+   font-weight: bold;
+   letter-spacing: 2px;
+   text-transform: uppercase;
+}
+
 
  /* HEADER CSS BELOW */
 
