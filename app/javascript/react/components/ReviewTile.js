@@ -101,7 +101,7 @@ class ReviewTile extends Component {
     }
 
     let rating = []
-    for (let i=0; i <= this.props.rating; i++) {
+    for (let i=0; i < this.props.rating; i++) {
       rating.push("★")
     }
 
