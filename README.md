@@ -7,10 +7,9 @@ DESCRIPTION:
 Meme Reviews is a web app that allows users to upload, rate, and review their favorite memes.
 On the home page you will see a collection of memes.
 
-Create an account, upload a meme and
-comment on your friends' memes!
+Create an account, upload a meme and comment on your friends' memes!
 
-https://warm-bastion-20086.herokuapp.com/
+https://extrememe.herokuapp.com/
 
 FEATURES:
 
